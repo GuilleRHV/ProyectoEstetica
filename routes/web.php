@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\StudyController;
+
+use App\Http\Controllers\PruebaController;
+use Illuminate\Database\Console\PruneCommand;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,14 +48,23 @@ Route::get('/studies/{id}', [StudyController::class, "show"]);
 
 Route::get('/studies/{id}/edit', [StudyController::class, "edit"]);
 
-Route::delete('/studies/{id}', [StudyController::class, "destroy"]);
+Route::delete('/studies/{id}/destroy', [StudyController::class, "destroy"]);
 
 Route::put('/studies/{id}', [StudyController::class, "uptade"]);
 
 Route::post('/studies', [StudyController::class, "store"]);
 
 */
-Route::resource('/studies', StudyController::class);
+
+Route::get('/studies/{id}', function ($id){
+    echo "Show del id ". $id;
+//}) -> where ("id","[0-9]+");
+}) -> where ("id","[0-9]+[a-zA-Z]+");
+
+
+
+Route::get('/prueba2/{name}', [PruebaController::class, "saludoCompleto"]);
+//Route::resource('/studies', StudyController::class);
 
 
 

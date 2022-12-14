@@ -27,5 +27,12 @@ class StudyController extends Controller
         echo "Edit de " . $id;
     }
 
+    public function destroy($id)
+    {
+        echo "Destoy de " . $id;
+    }
+
+
+
     
 }
