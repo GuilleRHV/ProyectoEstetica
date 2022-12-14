@@ -29,7 +29,7 @@ Route::get('/hola/{nombre}', function($nombre){
 Route::get('/saludo/{nombre?}', function($nombre = "Mundo"){
     echo "Hola $nombre.";
 });
-
+/*
 Route::get('/studies', [StudyController::class, "index"]);
 
 Route::get('/studies/create', [StudyController::class, "create"]);
@@ -37,5 +37,15 @@ Route::get('/studies/create', [StudyController::class, "create"]);
 Route::get('/studies/{id}', [StudyController::class, "show"]);
 
 Route::get('/studies/{id}/edit', [StudyController::class, "edit"]);
+
+Route::delete('/studies/{id}', [StudyController::class, "destroy"]);
+
+Route::put('/studies/{id}', [StudyController::class, "uptade"]);
+
+Route::post('/studies', [StudyController::class, "store"]);
+
+*/
+Route::resource('/studies', StudyController::class);
+
 
 
