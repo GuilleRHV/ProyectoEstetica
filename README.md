@@ -7,6 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 ## Abrir docker
+El docker-compose up -d hacerlo en entornods
 docker exec -it -u devuser laravel9 bash
 ## Crear controlador 
 php artisan make:controller AulaController -r
