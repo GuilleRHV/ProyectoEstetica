@@ -20,6 +20,12 @@ Route::get('/', function () {
 
 Route::get('/hola', function(){
     echo "Hola mundo.";
+    $arr = [1,2,3,"hola"];
+    //dd($_SERVER);
+   // dd($arr);
+    //Return devuelve en json
+    return $_SERVER;
+    dd($_SERVER);
 });
 
 Route::get('/hola/{nombre}', function($nombre){
