@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\AppEjemplos;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\StudyController;
 
 use App\Http\Controllers\PruebaController;
 use Illuminate\Database\Console\PruneCommand;
+
+use App\Http\Controllers\AppEjemplo;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,5 +69,22 @@ Route::get('/studies/{id}', function ($id){
 Route::get('/prueba2/{name}', [PruebaController::class, "saludoCompleto"]);
 //Route::resource('/studies', StudyController::class);
 
+//RUTAS CON NOMBRE
+Route::get('/contacta-con-ies',function(){
+return "dinos tu duda";
+})->name("contacto");
 
+/*Route::get('/',function(){
+    echo "<a href='".route("contacto")."'>Contactar 1</a><br>";
+    echo "<a href='contacta-con-ies'>Contactar 2</a><br>";
+    echo "<a href='contacta-con-ies'>Contactar 3</a><br>";
 
+});*/
+
+//---------------------------------------------
+Route::get('/informacion-asignatura',[AppEjemplo::class,'mostrarinformacion'])->name("infoasig");
+
+Route::get('/',function(){
+    echo "<a href='".route("infoasig")."'>Mostrar informacion Asignatura</a><br>";
+  
+});
