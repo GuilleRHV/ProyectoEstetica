@@ -9,6 +9,7 @@ use App\Http\Controllers\PruebaController;
 use Illuminate\Database\Console\PruneCommand;
 
 use App\Http\Controllers\AppEjemplo;
+use App\Http\Controllers\AsignaturaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,21 +26,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hola', function(){
+Route::get('/hola', function () {
     echo "Hola mundo.";
-    $arr = [1,2,3,"hola"];
+    $arr = [1, 2, 3, "hola"];
     //dd($_SERVER);
-   // dd($arr);
+    // dd($arr);
     //Return devuelve en json
     return $_SERVER;
     dd($_SERVER);
 });
 
-Route::get('/hola/{nombre}', function($nombre){
+Route::get('/hola/{nombre}', function ($nombre) {
     echo "Hola $nombre.";
 });
 //Si no me llega parametro el nombre es mundo
-Route::get('/saludo/{nombre?}', function($nombre = "Mundo"){
+Route::get('/saludo/{nombre?}', function ($nombre = "Mundo") {
     echo "Hola $nombre.";
 });
 /*
@@ -59,19 +60,19 @@ Route::post('/studies', [StudyController::class, "store"]);
 
 */
 
-Route::get('/studies/{id}', function ($id){
-    echo "Show del id ". $id;
-//}) -> where ("id","[0-9]+");
-}) -> where ("id","[0-9]+[a-zA-Z]+");
+Route::get('/studies/{id}', function ($id) {
+    echo "Show del id " . $id;
+    //}) -> where ("id","[0-9]+");
+})->where("id", "[0-9]+[a-zA-Z]+");
 
 
 
 Route::get('/prueba2/{name}', [PruebaController::class, "saludoCompleto"]);
-//Route::resource('/studies', StudyController::class);
+//Route::resource('/studies', [StudyController::class]);
 
 //RUTAS CON NOMBRE
-Route::get('/contacta-con-ies',function(){
-return "dinos tu duda";
+Route::get('/contacta-con-ies', function () {
+    return "dinos tu duda";
 })->name("contacto");
 
 /*Route::get('/',function(){
@@ -82,9 +83,17 @@ return "dinos tu duda";
 });*/
 
 //---------------------------------------------
-Route::get('/informacion-asignatura',[AppEjemplo::class,'mostrarinformacion'])->name("infoasig");
+Route::get('/informacion-asignatura', [AppEjemplo::class, 'mostrarinformacion'])->name("infoasig");
 
-Route::get('/',function(){
-    echo "<a href='".route("infoasig")."'>Mostrar informacion Asignatura</a><br>";
-  
+Route::get('/', function () {
+    echo "<a href='" . route("infoasig") . "'>Mostrar informacion Asignatura</a><br>";
 });
+
+/******************************************** */
+Route::resource('/asignaturas', AsignaturaController::class);
+    //Es lo mismo que 
+    /* Route::get('/asignaturas/create', [AsignaturaController::class,'create']);
+        Route::post('/asignaturas', [AsignaturaController::class,'store']);
+        Route::put('/asignaturas', [AsignaturaController::class,'update']);
+        ...
+    */
