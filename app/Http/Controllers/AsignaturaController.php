@@ -24,6 +24,7 @@ class AsignaturaController extends Controller
     public function create()
     {
         //Llama al formulario de alto de una asignatura
+        
         return view('asignaturas.create');
 
     }
@@ -37,7 +38,40 @@ class AsignaturaController extends Controller
     public function store(Request $request)
     {
         //Recoge los datos del formulario de alta
-        dd("HE LLEGADO AQUI");
+        //Aqui iria la logica de insertar en la bbdd.  save(modelo)
+        
+        $datos = $request->validate(
+
+            ['nombre'=>'required|max:7',
+            'curso'=>'required|integer | regex:/[1-2]/',
+            'ciclo'=>'required|regex: /[DAM-DAW]/'
+        ],[
+        'nombre.max'=>'El nombre no puede ser mas de 7 caracteres',
+        'nombre.required'=>'Debes rellenar el nombre',
+        'ciclo.required'=>'Debes rellenar el ciclo',
+        'curso.required'=>'Debes rellenar el curso',
+        'curso.integer'=>'El curso debe de ser numero entero',
+        'curso.regex'=>'El curso debe estar comprendido entre 1 y 2',
+       // 'ciclo.regex'=>'El ciclo debe ser DAM o DAW'
+    ]);
+        
+        /*$nombre = $request->input('nombre');
+        $curso = $request->input('curso');
+        $ciclo = $request->input('ciclo');
+        $comentario = $request->input('comentario');
+        */
+        //$datos = $request->all();
+
+        //$datos = $request->except('nombre');
+        //$datos = $request->only('nombre', 'curso', 'ciclo', 'comentario');
+        //dd($nombre, $curso, $ciclo, $comentario); //Los muestro
+        /*$nuevocampo="";
+        if($request->has('nuevocampo')){
+            dd($nuevocampo);
+        }else{
+            dd("No existe el campo");
+        }*/
+        dd($datos);
     }
 
     /**

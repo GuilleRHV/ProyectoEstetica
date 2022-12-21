@@ -140,7 +140,7 @@ ________________________________________________________________________________
 
     @section('boton')
     <p class="lead">
-      <input type="submit" class="btn btn-lg btn-secondary fw-bold border-white bg-black" value="@yield('accionformulario')"></input>
+      <input type="submit" class="btn btn-lg btn-secondary fw-bold border-white bg-black" value="@yield('accionformulario')"><!--</input>-->
     </p>
     @show
   </main>
