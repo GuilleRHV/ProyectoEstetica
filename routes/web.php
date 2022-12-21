@@ -10,6 +10,7 @@ use Illuminate\Database\Console\PruneCommand;
 
 use App\Http\Controllers\AppEjemplo;
 use App\Http\Controllers\AsignaturaController;
+use App\Http\Controllers\VideoclubController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,17 @@ use App\Http\Controllers\AsignaturaController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*EJERCICIO VIDEOCLUB*/ 
+
+Route::get('/videoclub',[VideoclubController::class,'index']);
+Route::get('/videoclub/login',[VideoclubController::class,'login']);
+Route::get('/videoclub/create',[VideoclubController::class,'create']);
+Route::post('/videoclub',[VideoclubController::class,'store']);
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -97,3 +109,10 @@ Route::resource('/asignaturas', AsignaturaController::class);
         Route::put('/asignaturas', [AsignaturaController::class,'update']);
         ...
     */
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*EJERCICIO VIDEOCLUB*/ 
+
+Route::get('/',[VideoclubController::class,'index']);

@@ -44,7 +44,7 @@ class AsignaturaController extends Controller
 
             ['nombre'=>'required|max:7',
             'curso'=>'required|integer | regex:/[1-2]/',
-            'ciclo'=>'required|regex: /[DAM-DAW]/'
+            'ciclo'=>'required|size:3|regex: /DA[M,W]/'
         ],[
         'nombre.max'=>'El nombre no puede ser mas de 7 caracteres',
         'nombre.required'=>'Debes rellenar el nombre',
@@ -52,7 +52,8 @@ class AsignaturaController extends Controller
         'curso.required'=>'Debes rellenar el curso',
         'curso.integer'=>'El curso debe de ser numero entero',
         'curso.regex'=>'El curso debe estar comprendido entre 1 y 2',
-       // 'ciclo.regex'=>'El ciclo debe ser DAM o DAW'
+       'ciclo.regex'=>'El ciclo debe ser DAM o DAW',
+       'ciclo.size'=>'El ciclo debe ser DAM o DAW'
     ]);
         
         /*$nombre = $request->input('nombre');
