@@ -45,5 +45,6 @@ Alta de Asignaturas
     @section('accionformulario')
     Enviar
     @stop
+    
 </form>
 @stop

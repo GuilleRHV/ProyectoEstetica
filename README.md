@@ -11,6 +11,9 @@ El docker-compose up -d hacerlo en entornods
 docker exec -it -u devuser laravel9 bash
 ## Crear controlador 
 php artisan make:controller AulaController -r
+## Dudas
+* El {{route('videoclub.store')}} solo me funciona si es Route::resource (no route::get)
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

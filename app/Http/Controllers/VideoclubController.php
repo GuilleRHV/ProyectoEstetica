@@ -11,6 +11,7 @@ class VideoclubController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    static $peliculas =[];
     public function index()
     {
         //
@@ -30,6 +31,7 @@ class VideoclubController extends Controller
     public function create()
     {
         //
+        
 
         return view("videoclub.create");
     }
@@ -43,7 +45,12 @@ class VideoclubController extends Controller
     public function store(Request $request)
     {
         //
-        dd("store");
+       // $datos = $request->only('titulo','director');
+        $titulo = $request->input('titulo');
+        $director = $request->input('director');
+        $pelicula = [$titulo,$director];
+        $peliculas[]=$pelicula;
+        dd("Titulo de la pelicula: $titulo | nombre del director: $director ");
     }
 
     /**

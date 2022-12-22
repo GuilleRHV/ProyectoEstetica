@@ -27,12 +27,13 @@ use App\Http\Controllers\VideoclubController;
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*EJERCICIO VIDEOCLUB*/ 
-
+Route::resource('/videoclub', VideoclubController::class);
+/*
 Route::get('/videoclub',[VideoclubController::class,'index']);
 Route::get('/videoclub/login',[VideoclubController::class,'login']);
 Route::get('/videoclub/create',[VideoclubController::class,'create']);
 Route::post('/videoclub',[VideoclubController::class,'store']);
-
+*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -115,4 +116,4 @@ Route::resource('/asignaturas', AsignaturaController::class);
 
 /*EJERCICIO VIDEOCLUB*/ 
 
-Route::get('/',[VideoclubController::class,'index']);
+//Route::get('/',[VideoclubController::class,'index']);
