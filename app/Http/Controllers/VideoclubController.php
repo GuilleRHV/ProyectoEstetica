@@ -51,6 +51,15 @@ class VideoclubController extends Controller
         $pelicula = [$titulo,$director];
         $peliculas[]=$pelicula;
         dd("Titulo de la pelicula: $titulo | nombre del director: $director ");
+
+    }
+
+
+    public function catalog(){
+        dd("pruieba");
+        /*foreach( self::$peliculas as $peli){
+            dd($peli);
+        }*/
     }
 
     /**
