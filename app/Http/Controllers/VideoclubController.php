@@ -49,17 +49,17 @@ class VideoclubController extends Controller
         $titulo = $request->input('titulo');
         $director = $request->input('director');
         $pelicula = [$titulo,$director];
-        $peliculas[]=$pelicula;
-        dd("Titulo de la pelicula: $titulo | nombre del director: $director ");
+        self::$peliculas[]=$pelicula;
+        //dd("Titulo de la pelicula: $titulo | nombre del director: $director ");
+        dd(self::$peliculas);
 
     }
 
 
     public function catalog(){
-        dd("pruieba");
-        /*foreach( self::$peliculas as $peli){
-            dd($peli);
-        }*/
+        //dd("pruieba");
+        dd(self::$peliculas);
+        dd("aa");
     }
 
     /**
