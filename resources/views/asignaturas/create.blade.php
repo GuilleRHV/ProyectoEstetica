@@ -7,6 +7,8 @@ Alta de Asignaturas
 @stop
 
 
+
+
 @section('cuerpo')
 @parent
 @if($errors->any())
