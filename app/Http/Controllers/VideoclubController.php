@@ -16,7 +16,7 @@ class VideoclubController extends Controller
     {
         //
 
-        dd("INDEX");
+        return view('videoclub.index');
     }
 
     /**
@@ -26,7 +26,8 @@ class VideoclubController extends Controller
      */
 
     public function login(){
-        return view('videoclub.login');
+        //return view('videoclub.index');
+        dd("login");
     }
     public function create()
     {
@@ -51,7 +52,9 @@ class VideoclubController extends Controller
         $pelicula = [$titulo,$director];
         self::$peliculas[]=$pelicula;
         //dd("Titulo de la pelicula: $titulo | nombre del director: $director ");
-        dd(self::$peliculas);
+        $peliculas=self::$peliculas;
+      //  dd(self::$peliculas);
+        return view('videoclub.login', ['peliculas'=>$peliculas]);
 
     }
 
