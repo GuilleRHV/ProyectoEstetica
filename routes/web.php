@@ -27,6 +27,7 @@ use App\Http\Controllers\VideoclubController;
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*EJERCICIO VIDEOCLUB*/ 
+
 Route::get('/videoclub/catalog',[VideoclubController::class,'catalog']);
 Route::resource('/videoclub', VideoclubController::class);
 
