@@ -12,6 +12,11 @@ class VideoclubController extends Controller
      * @return \Illuminate\Http\Response
      */
     static $peliculas =[];
+    public function gethome()
+    {
+        //return view('home.blade.php');
+        dd("func");
+    }
     public function index()
     {
         //

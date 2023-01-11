@@ -14,6 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         //
+        dd("functiona");
     }
 
     /**
@@ -24,7 +25,8 @@ class HomeController extends Controller
 
     public function gethome()
     {
-        return view('home.blade.php');
+        return view('home');
+    
     }
     public function create()
     {

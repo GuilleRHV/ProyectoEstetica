@@ -11,6 +11,8 @@ use Illuminate\Database\Console\PruneCommand;
 use App\Http\Controllers\AppEjemplo;
 use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\VideoclubController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CatalogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +30,12 @@ use App\Http\Controllers\VideoclubController;
 
 /*EJERCICIO VIDEOCLUB*/ 
 Route::get('/',[HomeController::class,'gethome']);
+Route::get('/catalog',[CatalogController::class,'getIndex']);
+Route::get('/catalog/create',[CatalogController::class,'getCreate']);
+Route::get('/catalog/{id}/edit',[CatalogController::class,'getEdit']);
 //Route::get('/',[CatalogController::class,'home']);
 
-Route::resource('/', CatalogController::class);
+//Route::resource('/', CatalogController::class);
 
 
 
@@ -43,9 +48,9 @@ Route::get('/videoclub/create',[VideoclubController::class,'create']);
 Route::post('/videoclub',[VideoclubController::class,'store']);
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Route::get('/hola', function () {
     echo "Hola mundo.";
