@@ -27,9 +27,10 @@ use App\Http\Controllers\VideoclubController;
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*EJERCICIO VIDEOCLUB*/ 
+Route::get('/',[HomeController::class,'gethome']);
+//Route::get('/',[CatalogController::class,'home']);
 
-Route::get('/videoclub/catalog',[VideoclubController::class,'catalog']);
-Route::resource('/videoclub', VideoclubController::class);
+Route::resource('/', CatalogController::class);
 
 
 
@@ -105,10 +106,10 @@ Route::get('/contacta-con-ies', function () {
 //---------------------------------------------
 Route::get('/informacion-asignatura', [AppEjemplo::class, 'mostrarinformacion'])->name("infoasig");
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     echo "<a href='" . route("infoasig") . "'>Mostrar informacion Asignatura</a><br>";
 });
-
+*/
 /******************************************** */
 Route::resource('/asignaturas', AsignaturaController::class);
     //Es lo mismo que 
