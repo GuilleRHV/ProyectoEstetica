@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profesores', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombreApellido');
-            $table->string('profesion');
-            $table->string('gradoAcademico');
-            $table->integer('telefono');
-            $table->timestamps();
+        Schema::create('courses', function (Blueprint $table) {
+            $table->unsignedInteger("teacher_id");
+            $table->foreign("teacher_id")->references("id")->on("teachers");
         });
     }
 
@@ -30,6 +26,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profesores');
+        Schema::create('courses', function (Blueprint $table) {
+            $table->dropForeign(["teacher_id"]);
+            $table->dropColumn("teacher_id");
+           
+        });
     }
 };

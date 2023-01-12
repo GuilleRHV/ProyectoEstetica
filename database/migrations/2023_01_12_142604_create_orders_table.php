@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string("solicitante");
-            $table->dateTime("fecha");
-            $table->text("descripcion");
             $table->timestamps();
+            $table->string('nombre');
+            $table->dateTime('fecha');
+            $table->text("descripcion");
+            $table->boolean("disponible");
         });
     }
 
@@ -32,3 +33,5 @@ return new class extends Migration
         Schema::dropIfExists('orders');
     }
 };
+
+

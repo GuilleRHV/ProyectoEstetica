@@ -13,14 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cursos', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('nivel');
-            $table->integer('horasAcademicas');
-            $table->integer('idProfesor')->unique();
-            $table->timestamps();
-        });
+        //
     }
 
     /**
@@ -30,6 +23,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cursos');
+        //
     }
 };
