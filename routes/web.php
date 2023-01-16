@@ -13,6 +13,7 @@ use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\VideoclubController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,11 +29,19 @@ use App\Http\Controllers\CatalogController;
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+Route::resource('products',ProductController::class);
+
+
 /*EJERCICIO VIDEOCLUB*/ 
+
+/*
 Route::get('/',[HomeController::class,'gethome']);
 Route::get('/catalog',[CatalogController::class,'getIndex']);
 Route::get('/catalog/create',[CatalogController::class,'getCreate']);
 Route::get('/catalog/{id}/edit',[CatalogController::class,'getEdit']);
+*/
+
 //Route::get('/',[CatalogController::class,'home']);
 
 //Route::resource('/', CatalogController::class);
