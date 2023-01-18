@@ -27,13 +27,19 @@ use App\Http\Controllers\ProductController;
 */
 
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-Route::resource('products',ProductController::class);
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
-/*EJERCICIO VIDEOCLUB*/ 
+
+Route::resource('products', ProductController::class);
+
+
+/*EJERCICIO VIDEOCLUB*/
 
 /*
 Route::get('/',[HomeController::class,'gethome']);
@@ -57,9 +63,6 @@ Route::get('/videoclub/create',[VideoclubController::class,'create']);
 Route::post('/videoclub',[VideoclubController::class,'store']);
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
 
 Route::get('/hola', function () {
     echo "Hola mundo.";
@@ -126,16 +129,19 @@ Route::get('/informacion-asignatura', [AppEjemplo::class, 'mostrarinformacion'])
 */
 /******************************************** */
 Route::resource('/asignaturas', AsignaturaController::class);
-    //Es lo mismo que 
-    /* Route::get('/asignaturas/create', [AsignaturaController::class,'create']);
+//Es lo mismo que 
+/* Route::get('/asignaturas/create', [AsignaturaController::class,'create']);
         Route::post('/asignaturas', [AsignaturaController::class,'store']);
         Route::put('/asignaturas', [AsignaturaController::class,'update']);
         ...
     */
 
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/*EJERCICIO VIDEOCLUB*/ 
+/*EJERCICIO VIDEOCLUB*/
 
 //Route::get('/',[VideoclubController::class,'index']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

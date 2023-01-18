@@ -48,7 +48,11 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        //Buscar producto
+        //Buscar vista
+        $product = Product::find($id);
+        //return $product;
+        return view('product.show', ['product'=>$product]);
     }
 
     /**
@@ -59,7 +63,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        dd("editar");
+       // dd("editar");
+        $product = Product::find($id);
+        return view('product.edit',['product'=>$product]);
     }
 
     /**
