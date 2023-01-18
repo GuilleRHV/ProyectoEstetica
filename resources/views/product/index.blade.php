@@ -14,10 +14,13 @@
                     <td>{{$product->descripcion}}</td>
                     <td>{{$product->precio}}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{route('products.edit',$product->id)}}">Editar</a>
+                        <a class="btn btn-warning" href="{{route('products.edit',$product->id)}}">Editar</a>
                     </td>
                     <td>
                         <a class="btn btn-primary" href="{{route('products.show',$product->id)}}">Ver</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="{{route('products.destroy',$product->id)}}">Delete</a>
                     </td>
 
                 </tr>
