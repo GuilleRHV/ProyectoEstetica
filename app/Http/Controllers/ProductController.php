@@ -52,13 +52,22 @@ class ProductController extends Controller
         ]);
 
 
-
+        //METODO 1
+       /*
         $producto = new Product;
         $producto->nombre=$request->input('nombre');
         $producto->descripcion=$request->input('descripcion');
         $producto->precio=$request->input('precio');
         $producto->save();
-        return redirect()->route('products.index')->with('producto', 'Producto creado');
+        */
+
+
+        //METODO 2 (En el model Product se incluye):
+        //protected $fillable = ['nombre', 'descripcion', 'precio'];
+
+        Product::create($request->all());
+        
+        return redirect()->route('products.index')->with('productocreado', 'Producto creado correctamente');
     }
 
     /**
@@ -121,7 +130,7 @@ class ProductController extends Controller
 
         //USAMOS EL ELOQUENT PARA GUARDAR
         $p->save(); //Es un metodo de eloquent
-        return redirect()->route('products.index')->with('exito','Producto actualizado correctamente');
+        return redirect()->route('products.index')->with('modificado','Producto actualizado correctamente');
     }
 
     /**
@@ -140,6 +149,6 @@ class ProductController extends Controller
         $p->delete();
         
         
-        return redirect()->route('products.index')->with('exito','Producto correctamente eliminado');
+        return redirect()->route('products.index')->with('eliminado','Producto correctamente eliminado');
     }
 }

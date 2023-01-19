@@ -4,6 +4,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        @if($message = Session::get('productocreado'))
+        <div class="alert alert-success">
+            <h4>{{$message}}</h4>
+        </div>
+        @endif
+
+
+
             <h1>Lista productos</h1>
             <a class="btn btn-success" href="{{ route('products.create') }}" class="btn btn">Nuevo producto</a>
 
