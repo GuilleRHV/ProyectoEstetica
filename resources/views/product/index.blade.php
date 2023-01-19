@@ -20,7 +20,13 @@
                         <a class="btn btn-primary" href="{{route('products.show',$product->id)}}">Ver</a>
                     </td>
                     <td>
-                        <a class="btn btn-danger" href="{{route('products.destroy',$product->id)}}">Delete</a>
+
+                        <form action="{{route('products.destroy',$product->id)}}" method="post">
+                            @csrf 
+                            @method('DELETE')
+                            <input type="submit" value="Delete" class="btn btn-danger">
+                        </form>
+                        
                     </td>
 
                 </tr>

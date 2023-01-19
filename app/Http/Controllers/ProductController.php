@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
     /**
@@ -37,7 +37,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*$producto= new Product([
+            'nombre'=>$request->input('nombre'),
+            'descripcion'=>$request->input('descripcion'),
+            'precio'=>$request->input('precio')
+        ]);*/
+        $producto = new Product;
+        $producto->nombre=$request->input('nombre');
+        $producto->descripcion=$request->input('descripcion');
+        $producto->precio=$request->input('precio');
+        $producto->save();
+        return redirect()->route('products.index')->with('producto', 'Producto creado');
     }
 
     /**
@@ -77,7 +87,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $p = Product::find($id);
+        //Request input del formulario (name)
+        $p->nombre = $request->input('nombre');
+        $p->descripcion = $request->input('descripcion');
+        $p->precio=$request->input('precio');
+
+        //USAMOS EL ELOQUENT PARA GUARDAR
+        $p->save(); //Es un metodo de eloquent
+        return redirect()->route('products.index')->with('exito','Producto actualizado correctamente');
     }
 
     /**
@@ -88,6 +106,12 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        dd('destrozado');
+
+        //Metodo 1
+        /*$product = Product::find($id);
+        $product->delete();
+        */ 
+        Product::destroy($id);
+        return redirect()->route('products.index')->with('exito','Producto correctamente eliminado');
     }
 }
