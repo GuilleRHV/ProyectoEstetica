@@ -37,11 +37,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        /*$producto= new Product([
-            'nombre'=>$request->input('nombre'),
-            'descripcion'=>$request->input('descripcion'),
-            'precio'=>$request->input('precio')
-        ]);*/
+        $request->validate([
+            'nombre' => 'required|max:100',
+            'descripcion' => 'required',
+            'precio' => 'required|not_in:0'
+        ],[
+            'nombre.required' => 'El nombre es obligatiorio',
+            'descripcion.required' => 'La descripcion es obligatioria',
+            'precio.required' => 'El precio es obligatiorio',
+            'nombre.max' => 'El nombre no puede tener mas de 100 caracteres',
+            'precio.not_in' => 'El precio no debe ser 0'
+
+
+        ]);
+
+
+
         $producto = new Product;
         $producto->nombre=$request->input('nombre');
         $producto->descripcion=$request->input('descripcion');
@@ -87,6 +98,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombre' => 'required|max:100',
+            'descripcion' => 'required',
+            'precio' => 'required|not_in:0'
+        ],[
+            'nombre.required' => 'El nombre es obligatiorio',
+            'descripcion.required' => 'La descripcion es obligatioria',
+            'precio.required' => 'El precio es obligatiorio',
+            'nombre.max' => 'El nombre no puede tener mas de 100 caracteres',
+            'precio.not_in' => 'El precio no debe ser 0'
+
+
+        ]);
+
+
         $p = Product::find($id);
         //Request input del formulario (name)
         $p->nombre = $request->input('nombre');
@@ -108,10 +134,12 @@ class ProductController extends Controller
     {
 
         //Metodo 1
-        /*$product = Product::find($id);
-        $product->delete();
-        */ 
-        Product::destroy($id);
+        //Product::destroy($id);
+
+        $p = Product::find($id);
+        $p->delete();
+        
+        
         return redirect()->route('products.index')->with('exito','Producto correctamente eliminado');
     }
 }
