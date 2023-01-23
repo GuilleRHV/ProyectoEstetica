@@ -9,6 +9,7 @@ class Client extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["DNI","nombre","apellidos","telefono","email"];
     public function order(){
         return $this->hasOne(Order::class);
     }
