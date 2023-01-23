@@ -14,6 +14,7 @@ use App\Http\Controllers\VideoclubController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,8 @@ Route::get('/', function () {
 
 Route::resource('products', ProductController::class);
 
+
+Route::resource('clients', ClientController::class);
 
 /*EJERCICIO VIDEOCLUB*/
 
