@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Order;
+use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,13 +18,16 @@ class OrderFactory extends Factory
      */
 
      protected $model = Order::class;
+
+     //private 
     public function definition()
     {
         return [
             "nombre"=>$this->faker->word(),
             "fecha"=>$this->faker->dateTime(),
             "descripcion"=>$this->faker->paragraph(),
-            "disponible"=>$this->faker->boolean()
+            "disponible"=>$this->faker->boolean(),
+            "client_id"=>Client::random()->id,
 
            /* DB::table('products')->insert([
                 'nombre' => 'Alicates',
