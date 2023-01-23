@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Client;
 
 class ClientController extends Controller
 {
@@ -13,7 +14,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $clientList= Client::all();
+        return view("client.index,['clientList'=>$clientList']");
     }
 
     /**
@@ -23,7 +25,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view("client.create");
     }
 
     /**
@@ -34,7 +36,24 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $request->validate([
+
+        "DNI"=>"required",
+        "nombre"=>"required",
+        "apellidos"=>"required",
+        "telefono"=>"required",
+        "email"=>"required"
+       ],[
+        "DNI.required"=>"El dni es obvligatorio",
+        "nombre.required"=>"El nombre es obvligatorio",
+        "apellidos.required"=>"El apellidos es obvligatorio",
+        "telefono.required"=>"El telefono es obvligatorio",
+        "email.required"=>"El email es obvligatorio"
+
+       ]);
+       Client::create($request->all());
+       return redirect("client.index")->with("exito","cliente creado correctamente");
+
     }
 
     /**
@@ -45,7 +64,8 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = Client::find($id);
+        return view('client.show', ['client'=>$client]);
     }
 
     /**
@@ -56,7 +76,8 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = Client::find($id);
+        return view('client.edit', ['client'=>$client]);
     }
 
     /**
@@ -68,7 +89,31 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+
+            "DNI"=>"required",
+            "nombre"=>"required",
+            "apellidos"=>"required",
+            "telefono"=>"required",
+            "email"=>"required"
+           ],[
+            "DNI.required"=>"El dni es obvligatorio",
+            "nombre.required"=>"El nombre es obvligatorio",
+            "apellidos.required"=>"El apellidos es obvligatorio",
+            "telefono.required"=>"El telefono es obvligatorio",
+            "email.required"=>"El email es obvligatorio"
+    
+           ]);
+
+           $client = Client::find($id);
+           $client->DNI = $request->input("DNI");
+           $client->nombre = $request->input("nombre");
+           $client->apellidos = $request->input("apellidos");
+           $client->telefono = $request->input("telefono");
+           $client->email = $request->input("email");
+
+           $client->save();
+           return redirect()->route('clients.index')->with("exito","Modificado exitosamente");
     }
 
     /**
@@ -79,6 +124,9 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $client = Client::find($id);
+        $client->delete();
+        return redirect()->route('clients.index')->with("exito","Eliminado exitosamente");
     }
 }
