@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
+
+    public function order(){
+        return $this->hasOne(Order::class);
+    }
 }
