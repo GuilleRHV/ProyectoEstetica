@@ -27,7 +27,7 @@ class OrderFactory extends Factory
             "fecha"=>$this->faker->dateTime(),
             "descripcion"=>$this->faker->paragraph(),
             "disponible"=>$this->faker->boolean(),
-            "client_id"=>Client::random()->id,
+            "client_id"=>Client::inRandomOrder()->first()->id,
 
            /* DB::table('products')->insert([
                 'nombre' => 'Alicates',
