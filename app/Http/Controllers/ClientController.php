@@ -15,7 +15,7 @@ class ClientController extends Controller
     public function index()
     {
         $clientList= Client::all();
-        return view("client.index,['clientList'=>$clientList']");
+        return view('client.index',['clientList'=>$clientList]);
     }
 
     /**
@@ -52,7 +52,8 @@ class ClientController extends Controller
 
        ]);
        Client::create($request->all());
-       return redirect("client.index")->with("exito","cliente creado correctamente");
+       //return redirect("clients.index")->with("exito","cliente creado correctamente");
+       return redirect()->route('clients.index')->with('exito', 'cliente creado correctamente');
 
     }
 
