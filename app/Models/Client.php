@@ -10,7 +10,9 @@ class Client extends Model
     use HasFactory;
 
     protected $fillable = ["DNI","nombre","apellidos","telefono","email"];
-    public function order(){
-        return $this->hasOne(Order::class);
+    public function orders(){
+        //return $this->hasMany(Order::class); //Relacion 1:N
+
+        return $this->belongsToMany(Order::class); //Relacion n:M
     }
 }

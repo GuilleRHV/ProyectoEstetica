@@ -18,6 +18,6 @@ class OrderSeeder extends Seeder
     {
         //DB::table('orders')->truncate();
        
-        Order::factory()->count(20)->create();
+        Order::factory()->count(50)->create();
     }
 }

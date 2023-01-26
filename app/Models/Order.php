@@ -9,7 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
-    public function client(){
-        return $this->belongsTo(Client::class);
+    public function clients(){
+        //return $this->hasMany(Client::class); //Relacion 1:N
+        return $this->belongsToMany(Client::class); //Relacion n:M
     }
 }

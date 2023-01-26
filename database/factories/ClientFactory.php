@@ -15,6 +15,7 @@ class ClientFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    //Asocio al modelo
     protected $model = Client::class;
     public function definition()
     {

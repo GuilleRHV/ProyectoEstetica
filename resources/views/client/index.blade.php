@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @if($message = Session::get('clientocreado'))
+            @if($message = Session::get('clientcreado'))
             <div class="alert alert-success">
                 <h4>{{$message}}</h4>
             </div>

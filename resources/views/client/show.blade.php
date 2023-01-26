@@ -38,6 +38,14 @@
                     <label for="email" class="col-form-label">{{ $client->email ?? '' }}</label>
                     </div>
 
+                    @foreach($client->order as $cl)
+
+                    <div class="form-group">
+                    <label for="email" class="col-form-label" style="font-weight:600;font-size:17px">Pedido</label><br>
+                    <label for="email" class="col-form-label">{{ $cl ?? '' }}</label>
+                    </div>
+                    @endforeach
+
                     
 
                         
