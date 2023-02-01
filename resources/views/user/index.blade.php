@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @if($message = Session::get('clientcreado'))
+            @if($message = Session::get('usercreado'))
             <div class="alert alert-success">
                 <h4>{{$message}}</h4>
             </div>
@@ -13,36 +13,36 @@
 
 
             <h1>Lista clientes</h1>
-            <a class="btn btn-success" href="{{ route('clients.create') }}" class="btn btn">Nuevo cliente</a>
+            <a class="btn btn-success" href="{{ route('users.create') }}" class="btn btn">Nuevo cliente</a>
 
             <table class="table table-striped table-hover">
                 <tr>
-                    <td>DNI</td>
+                    <td>id</td>
                     <td>nombre</td>
-                    <td>apellidos</td>
-                    <td>telefono</td>
+
                     <td>email</td>
+                    <td>password</td>
                 </tr>
-                @foreach($clientList as $client)
+                @foreach($userList as $user)
                 <tr>
-                    <td>{{$client->dni}}</td>
-                    <td>{{$client->nombre}}</td>
-                    <td>{{$client->apellidos}}</td>
-                    <td>{{$client->telefono}}</td>
-                    <td>{{$client->email}}</td>
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->name}}</td>
+
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->password}}</td>
                     <td>
-                        @can ('update', $client)
-                        <a class="btn btn-warning" href="{{route('clients.edit',$client->id)}}">Editar</a>
+                        @can ('update', $user)
+                        <a class="btn btn-warning" href="{{route('users.edit',$user->id)}}">Editar</a>
                         @endcan
                     </td>
                     <td>
-                    @can ('view', $client)
-                        <a class="btn btn-primary" href="{{route('clients.show',$client->id)}}">Ver</a>
+                        @can ('view', $user)
+                        <a class="btn btn-primary" href="{{route('users.show',$user->id)}}">Ver</a>
                         @endcan
                     </td>
                     <td>
 
-                        <form action="{{route('clients.destroy',$client->id)}}" method="post">
+                        <form action="{{route('users.destroy',$user->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="Delete" class="btn btn-danger">

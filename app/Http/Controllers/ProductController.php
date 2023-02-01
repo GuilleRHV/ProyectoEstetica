@@ -12,11 +12,20 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+
     public function index()
     {
-        $productList= Product::all(); //eloquent ORM
+        $this->authorize('viewAny', Product::class);
+        $productList = Product::all(); //eloquent ORM
         //return $productList;
-        return view('product.index', ['productList'=>$productList]);
+        return view('product.index', ['productList' => $productList]);
     }
 
     /**
@@ -41,7 +50,7 @@ class ProductController extends Controller
             'nombre' => 'required|max:100',
             'descripcion' => 'required',
             'precio' => 'required|not_in:0'
-        ],[
+        ], [
             'nombre.required' => 'El nombre es obligatiorio',
             'descripcion.required' => 'La descripcion es obligatioria',
             'precio.required' => 'El precio es obligatiorio',
@@ -53,7 +62,7 @@ class ProductController extends Controller
 
 
         //METODO 1
-       /*
+        /*
         $producto = new Product;
         $producto->nombre=$request->input('nombre');
         $producto->descripcion=$request->input('descripcion');
@@ -66,7 +75,7 @@ class ProductController extends Controller
         //protected $fillable = ['nombre', 'descripcion', 'precio'];
 
         Product::create($request->all());
-        
+
         return redirect()->route('products.index')->with('productocreado', 'Producto creado correctamente');
     }
 
@@ -78,11 +87,15 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+
+
         //Buscar producto
+        
         //Buscar vista
         $product = Product::find($id);
+        $this->authorize('view', $product);
         //return $product;
-        return view('product.show', ['product'=>$product]);
+        return view('product.show', ['product' => $product]);
     }
 
     /**
@@ -93,9 +106,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-       // dd("editar");
+        // dd("editar");
         $product = Product::find($id);
-        return view('product.edit',['product'=>$product]);
+        return view('product.edit', ['product' => $product]);
     }
 
     /**
@@ -111,7 +124,7 @@ class ProductController extends Controller
             'nombre' => 'required|max:100',
             'descripcion' => 'required',
             'precio' => 'required|not_in:0'
-        ],[
+        ], [
             'nombre.required' => 'El nombre es obligatiorio',
             'descripcion.required' => 'La descripcion es obligatioria',
             'precio.required' => 'El precio es obligatiorio',
@@ -126,11 +139,11 @@ class ProductController extends Controller
         //Request input del formulario (name)
         $p->nombre = $request->input('nombre');
         $p->descripcion = $request->input('descripcion');
-        $p->precio=$request->input('precio');
+        $p->precio = $request->input('precio');
 
         //USAMOS EL ELOQUENT PARA GUARDAR
         $p->save(); //Es un metodo de eloquent
-        return redirect()->route('products.index')->with('modificado','Producto actualizado correctamente');
+        return redirect()->route('products.index')->with('modificado', 'Producto actualizado correctamente');
     }
 
     /**
@@ -147,8 +160,8 @@ class ProductController extends Controller
 
         $p = Product::find($id);
         $p->delete();
-        
-        
-        return redirect()->route('products.index')->with('eliminado','Producto correctamente eliminado');
+
+
+        return redirect()->route('products.index')->with('eliminado', 'Producto correctamente eliminado');
     }
 }

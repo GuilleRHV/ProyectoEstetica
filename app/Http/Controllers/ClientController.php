@@ -14,6 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Client::class);
         $clientList= Client::all();
         return view('client.index',['clientList'=>$clientList]);
     }
