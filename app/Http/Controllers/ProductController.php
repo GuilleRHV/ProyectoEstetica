@@ -36,6 +36,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('product.create');
+      //  $this->authorize('create', Product::class);
     }
 
     /**
@@ -90,12 +91,34 @@ class ProductController extends Controller
 
 
         //Buscar producto
-        
+
         //Buscar vista
         $product = Product::find($id);
         $this->authorize('view', $product);
-        //return $product;
-        return view('product.show', ['product' => $product]);
+
+        
+        if (session('cont') == null) {
+            
+            session(['cont'=>'1']);
+
+        } else {
+            $cont = session('cont');
+            if($id%2==0){
+                session(['color'=>'rojo']);
+                $cont++;
+            }else{
+                session(['color'=>'verde']);
+                $cont = 0;
+            }
+           
+            session(['cont'=>$cont]);
+
+           // session(['contador'=>'1']);
+        }
+        
+            //return $product;
+            return view('product.show', ['product' => $product]);
+        
     }
 
     /**

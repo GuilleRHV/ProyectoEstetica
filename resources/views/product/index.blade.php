@@ -10,6 +10,11 @@
             </div>
             @endif
 
+            
+
+           {{ session(['contador'=>'1'])}}
+
+           {{session('cont') }}
 
 
             <h1>Lista productos</h1>

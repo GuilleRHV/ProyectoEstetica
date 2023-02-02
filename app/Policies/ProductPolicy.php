@@ -16,6 +16,8 @@ class ProductPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
+
+     
     public function viewAny(User $user)
     {
         return true;
@@ -30,6 +32,7 @@ class ProductPolicy
      */
     public function view(User $user, Product $product)
     {
+        
         return true;
     }
 

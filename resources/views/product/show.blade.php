@@ -8,7 +8,9 @@
             
             
                
-                    
+           
+
+            {{session('color') }}
 
                     <div class="form-group">
                     <label for="nombre" class="col-form-label" style="font-weight:600;font-size:17px">Nombre</label><br>
