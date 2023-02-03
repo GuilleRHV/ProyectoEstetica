@@ -12,9 +12,10 @@
 
 
 
-            <h1>Lista clientes</h1>
+            <h1>Lista usuarios</h1>
+            @can ('create', 'App\Models\User')
             <a class="btn btn-success" href="{{ route('users.create') }}" class="btn btn">Nuevo cliente</a>
-
+            @endcan
             <table class="table table-striped table-hover">
                 <tr>
                     <td>id</td>
@@ -41,13 +42,13 @@
                         @endcan
                     </td>
                     <td>
-
+                    @can ('create', $user)
                         <form action="{{route('users.destroy',$user->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="Delete" class="btn btn-danger">
                         </form>
-
+                    @endcan
                     </td>
 
                 </tr>

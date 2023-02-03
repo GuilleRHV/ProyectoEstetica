@@ -13,8 +13,9 @@
 
 
             <h1>Lista clientes</h1>
+            @can ('create', 'App\Models\Client')
             <a class="btn btn-success" href="{{ route('clients.create') }}" class="btn btn">Nuevo cliente</a>
-
+            @endcan
             <table class="table table-striped table-hover">
                 <tr>
                     <td>DNI</td>
@@ -41,13 +42,13 @@
                         @endcan
                     </td>
                     <td>
-
+                    @can ('delete', $client)
                         <form action="{{route('clients.destroy',$client->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="Delete" class="btn btn-danger">
                         </form>
-
+                    @endcan 
                     </td>
 
                 </tr>

@@ -40,7 +40,11 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        return true;
+        if($user->id=="1"){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -73,7 +77,11 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        //
+        if($user->id=="1"){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
