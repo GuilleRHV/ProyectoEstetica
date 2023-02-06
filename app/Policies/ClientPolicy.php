@@ -41,7 +41,11 @@ class ClientPolicy
      */
     public function create(User $user)
     {
-        //
+        if($user->id == "1"){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -82,7 +86,11 @@ class ClientPolicy
      */
     public function delete(User $user, Client $client)
     {
-        //
+        if($user->id == "1"){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
