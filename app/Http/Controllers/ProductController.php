@@ -35,6 +35,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Product::class);
         return view('product.create');
       //  $this->authorize('create', Product::class);
     }
@@ -76,7 +77,7 @@ class ProductController extends Controller
         //protected $fillable = ['nombre', 'descripcion', 'precio'];
 
         Product::create($request->all());
-
+        $this->authorize('create', Product::class);
         return redirect()->route('products.index')->with('productocreado', 'Producto creado correctamente');
     }
 
@@ -131,6 +132,7 @@ class ProductController extends Controller
     {
         // dd("editar");
         $product = Product::find($id);
+        $this->authorize('update', $product);
         return view('product.edit', ['product' => $product]);
     }
 
@@ -159,6 +161,7 @@ class ProductController extends Controller
 
 
         $p = Product::find($id);
+        $this->authorize('update', $p);
         //Request input del formulario (name)
         $p->nombre = $request->input('nombre');
         $p->descripcion = $request->input('descripcion');
@@ -182,6 +185,7 @@ class ProductController extends Controller
         //Product::destroy($id);
 
         $p = Product::find($id);
+        $this->authorize('delete', $p);
         $p->delete();
 
 
