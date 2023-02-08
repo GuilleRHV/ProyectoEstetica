@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\StudyController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,5 @@ Route::resource("/products", ProductController::class)->except(['create', 'edit'
 Route::fallback(function(){
     return response()->json(["error"=>"No encontradooo"],404);
 });
+
+Route::resource("/studies", StudyController::class);

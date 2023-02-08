@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\Study;
 use Illuminate\Support\Facades\Validator;
 
 
-class ProductController extends Controller
+class StudyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +19,10 @@ class ProductController extends Controller
     //Se deberia devolver un objeto con una propiedad 
     public function index()
     {
-        $products = Product::all();
+        $studies = Study::all();
 
 
-        return response()->json(['status' => 'ok', 'data' => $products], 200);
+        return response()->json(['status' => 'ok', 'data' => $studies], 200);
     }
 
     /**
@@ -47,9 +47,11 @@ class ProductController extends Controller
             $request->all(),
             [
 
-                'nombre' => 'required|max:100',
-                'descripcion' => 'required',
-                'precio' => 'required|not_in:0'
+                'name' => 'required|max:100',
+                'code' => 'required',
+                'family' => 'required|max:100',
+                'level' => 'required',
+               
             ],
             [
                 "precio.required" => "El precio es obligatorio",
@@ -70,7 +72,7 @@ class ProductController extends Controller
             );
         }
 
-        $newproduct = Product::create($request->all());
+        $newproduct = Study::create($request->all());
 
         return response()->json([
             'status' => "OK",
@@ -86,7 +88,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
+        $product = Study::find($id);
 
         if (!$product) {
             return response()->json(['error' => (['code' => 404, 'message' => 'No se encuentra el producto'])], 404);
@@ -115,7 +117,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Product::find($id);
+        $product = Study::find($id);
         if (!$product) {
             return response()->json(
                 [
@@ -131,9 +133,10 @@ class ProductController extends Controller
         $validated = Validator::make(
             $request->all(),
             [
-                'nombre' => 'required|max:100',
-                'descripcion' => 'required',
-                'precio' => 'required|not_in:0'
+                'name' => 'required|max:100',
+                'code' => 'required',
+                'family' => 'required|max:100',
+                'level' => 'required',
             ],
             [
                 "precio.required" => "El precio es obligatorio",
@@ -166,7 +169,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
+        $product = Study::find($id);
 
         if (!$product) {
             return response()->json([
