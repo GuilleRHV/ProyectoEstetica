@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('centroesteticas', function (Blueprint $table) {
-            $table->unsignedBigInteger('asesoriaimagenes_id')->nullable();
-            $table->foreign('asesoriaimagenes_id')->references('id')->on('asesoriaimagenes')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('centroasesoria_id')->nullable();
+            $table->foreign('centroasesoria_id')->references('id')->on('centroasesorias')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -27,9 +27,9 @@ return new class extends Migration
     public function down()
     {
         Schema::table('centroesteticas', function (Blueprint $table) {
-            $table->dropForeign(['asesoriaimagenes_id']);
+            $table->dropForeign(['centroasesoria_id']);
             //$table->dropForeign('orders_asesoriaimagenes_id_foreign');
-            $table->dropColumn('asesoriaimagenes_id');
+            $table->dropColumn('centroasesoria_id');
         });
     }
 };

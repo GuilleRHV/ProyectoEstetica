@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('centroesteticas', function (Blueprint $table) {
             $table->id();
-          
-            $table->boolean("unisex");
-            $table->integer("capacidadmax");
+            $table->integer("nsalas");
+            $table->boolean("fisioterapia");
+            
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('centroestetica');
+        Schema::dropIfExists('centroesteticas');
     }
 };

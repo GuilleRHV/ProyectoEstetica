@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('peluquerias', function (Blueprint $table) {
+        Schema::create('tratamientos', function (Blueprint $table) {
             $table->id();
-            $table->integer("nsalas");
-            $table->boolean("fisioterapia");
+            
+            $table->integer('tratamiento_id')->unique();
+            $table->string("nombre");
+            $table->float("precio");
+            $table->string("tipo");
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('peluquerias');
+        Schema::dropIfExists('tratamientos');
     }
 };

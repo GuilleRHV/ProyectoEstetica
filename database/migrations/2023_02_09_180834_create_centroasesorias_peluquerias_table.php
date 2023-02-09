@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('asesoriaimagenes_peluquerias', function (Blueprint $table) {
+        Schema::create('centroasesorias_peluquerias', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('asesoriaimagen_id');//Se crea el campo
-            $table->foreign('asesoriaimagen_id')->references('id')->on('asesoriaimagenes');//El enlace de fk
+            $table->unsignedBigInteger('centroasesoria_id');//Se crea el campo
+            $table->foreign('centroasesoria_id')->references('id')->on('centroasesorias');//El enlace de fk
 
             $table->unsignedBigInteger('peluqueria_id');//Se crea el campo
             $table->foreign('peluqueria_id')->references('id')->on('peluquerias');//El enlace de fk
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asesoriaimagen_peluqueria');
+        Schema::dropIfExists('centroasesorias_peluquerias');
     }
 };
