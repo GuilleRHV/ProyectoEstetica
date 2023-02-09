@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('asesoriaimagen_centroestetica', function (Blueprint $table) {
+        Schema::create('centroesteticas', function (Blueprint $table) {
             $table->id();
+          
+            $table->boolean("unisex");
+            $table->integer("capacidadmax");
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asesoriaimagen_centroestetica');
+        Schema::dropIfExists('centroestetica');
     }
 };

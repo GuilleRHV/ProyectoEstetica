@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('centroestetica', function (Blueprint $table) {
+        Schema::create('asesoriaimagenes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('asesoriaimagen_id')->nullable();
-            $table->foreign('asesoriaimagen_id')->references('id')->on('asesoriaimagen')->onUpdate('cascade')->onDelete('cascade');
-            $table->boolean("unisex");
-            $table->integer("capacidadmax");
+            $table->string("nombre");
+            $table->string("razonsocial");
+            $table->string("direccion");
+            $table->string("telefono");
+            $table->string("email");
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('centroestetica');
+        Schema::dropIfExists('asesoriaimagen');
     }
 };

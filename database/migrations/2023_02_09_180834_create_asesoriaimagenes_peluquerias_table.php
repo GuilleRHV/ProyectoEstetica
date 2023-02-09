@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('asesoriaimagen_peluqueria', function (Blueprint $table) {
+        Schema::create('asesoriaimagenes_peluquerias', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('asesoriaimagen_id');//Se crea el campo
-            $table->foreign('asesoriaimagen_id')->references('id')->on('asesoriaimagen');//El enlace de fk
+            $table->foreign('asesoriaimagen_id')->references('id')->on('asesoriaimagenes');//El enlace de fk
 
-            $table->unsignedBigInteger('order_id');//Se crea el campo
-            $table->foreign('order_id')->references('id')->on('orders');//El enlace de fk
+            $table->unsignedBigInteger('peluqueria_id');//Se crea el campo
+            $table->foreign('peluqueria_id')->references('id')->on('peluquerias');//El enlace de fk
 
 
             $table->timestamps();
