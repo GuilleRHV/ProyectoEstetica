@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('socios_tratamientos', function (Blueprint $table) {
-            $table->id();
-
+           //No pueden haber 2 primary key
+            // $table->id();
+            $table->string("fecha");
 
             $table->unsignedBigInteger('socio_id');//Se crea el campo
             $table->foreign('socio_id')->references('id')->on('socios');//El enlace de fk
@@ -23,8 +24,11 @@ return new class extends Migration
             $table->unsignedBigInteger('tratamiento_id');//Se crea el campo
             $table->foreign('tratamiento_id')->references('id')->on('tratamientos');//El enlace de fk
 
+
+            
             //Mas tarde modificar el tipo 
-            $table->string("fecha")->unique();
+            
+            $table->primary(['socio_id', 'fecha'])->unique();
 
             $table->timestamps();
         });
