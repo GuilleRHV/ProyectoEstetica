@@ -8,7 +8,7 @@
 @endcan
 <table class="table table-striped table-hover">
     <tr>
-        <td>nombre</td>
+        <td>nombreee</td>
         <td>email</td>
         <td>password</td>
         <td>puesto</td>

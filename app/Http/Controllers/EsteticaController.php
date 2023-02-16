@@ -50,8 +50,8 @@ class EsteticaController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', Estetica::class);
-        return view("esteticas.create");
+       // $this->authorize('create', Estetica::class);
+        return view("estetica.create");
     }
 
     /**
@@ -75,7 +75,9 @@ class EsteticaController extends Controller
      */
     public function show($id)
     {
-        $estetica = Estetica::find($id);
+        
+        $estetica = Admin::find($id);
+       
         return view('estetica.show', ['estetica' => $estetica]);
     }
 
@@ -87,7 +89,9 @@ class EsteticaController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $estetica = Admin::find($id);
+        return view('estetica.edit', ['estetica' => $estetica]);
     }
 
     /**
@@ -99,7 +103,31 @@ class EsteticaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $request->validate([
+
+            "nombre" => "required",
+            "email" => "required",
+            "password" => "required",
+           
+        ], [
+     
+            "nombre.required" => "El nombre es obvligatorio",
+        
+            "password.required" => "El password es obvligatorio",
+            "email.required" => "El email es obvligatorio"
+
+        ]);
+
+        $estetica = Admin::find($id);
+        
+        $estetica->nombre = $request->input("nombre");
+        $estetica->password = $request->input("password");
+        $estetica->email = $request->input("email");
+        $estetica->puesto = $request->input("puesto");
+
+        $estetica->save();
+        return redirect()->route('esteticas.index')->with("exito", "Modificado exitosamente");
     }
 
     /**
@@ -110,6 +138,9 @@ class EsteticaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->authorize('delete', Estetica::class);
+        $estetica = Admin::find($id);
+        $estetica->delete();
+        return redirect()->route('esteticas.index')->with("exito", "Eliminado exitosamente");
     }
 }

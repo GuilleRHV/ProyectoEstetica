@@ -47,7 +47,9 @@ class AdminController extends Controller
      */
     public function show($id)
     {
+        
         $admin = Admin::find($id);
+        //$this->authorize('view', $admin);
         return view('admin.show', ['admin' => $admin]);
     }
 

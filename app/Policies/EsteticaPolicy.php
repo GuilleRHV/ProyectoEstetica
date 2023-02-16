@@ -19,7 +19,7 @@ class EsteticaPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+       
     }
 
     /**
@@ -31,7 +31,7 @@ class EsteticaPolicy
      */
     public function view(User $user, Estetica $estetica)
     {
-        return true;
+       
     }
 
     /**
@@ -43,13 +43,8 @@ class EsteticaPolicy
     public function create(User $user)
     {
 
-        
-        if($user->puesto == "gerente"){
-            return true;
-        }else{
-            return false;
-        }
-        
+
+     
     }
 
     /**
@@ -61,7 +56,7 @@ class EsteticaPolicy
      */
     public function update(User $user, Estetica $estetica)
     {
-        //
+    
     }
 
     /**
@@ -73,7 +68,7 @@ class EsteticaPolicy
      */
     public function delete(User $user, Estetica $estetica)
     {
-        //
+       
     }
 
     /**

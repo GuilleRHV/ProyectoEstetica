@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <h1>Detalle del cliente</h1>
+            <h1>Detalle del socio</h1>
 
 
 

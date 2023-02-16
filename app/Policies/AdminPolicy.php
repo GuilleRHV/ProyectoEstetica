@@ -30,7 +30,11 @@ class AdminPolicy
      */
     public function view(User $user, Admin $admin)
     {
-        return true;
+        if ($user->puesto == "gerente" || $user->puesto == "recepcionista") {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -41,7 +45,11 @@ class AdminPolicy
      */
     public function create(User $user)
     {
-        return true;
+        if ($user->puesto == "gerente" || $user->puesto == "recepcionista") {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -53,7 +61,11 @@ class AdminPolicy
      */
     public function update(User $user, Admin $admin)
     {
-        //
+        if ($user->puesto == "gerente" || $user->puesto == "recepcionista") {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -65,7 +77,11 @@ class AdminPolicy
      */
     public function delete(User $user, Admin $admin)
     {
-        //
+        if ($user->puesto == "gerente") {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
