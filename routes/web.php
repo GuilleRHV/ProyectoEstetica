@@ -16,6 +16,7 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EsteticaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,8 @@ Route::resource('products', ProductController::class);
 Route::resource('clients', ClientController::class);
 
 Route::resource('users', UserController::class);
+
+Route::resource('esteticas', EsteticaController::class);
 
 /*EJERCICIO VIDEOCLUB*/
 
@@ -149,6 +152,10 @@ Route::resource('/asignaturas', AsignaturaController::class);
 /*EJERCICIO VIDEOCLUB*/
 
 //Route::get('/',[VideoclubController::class,'index']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
