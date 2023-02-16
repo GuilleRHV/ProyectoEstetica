@@ -42,11 +42,11 @@ Route::get('/', function () {
 
 Route::resource('products', ProductController::class);
 
-
 Route::resource('clients', ClientController::class);
 
 Route::resource('users', UserController::class);
 
+Route::get('/esteticas/credenciales',[EsteticaController::class,'credenciales'])->name('esteticas.credenciales');
 Route::resource('esteticas', EsteticaController::class);
 
 /*EJERCICIO VIDEOCLUB*/

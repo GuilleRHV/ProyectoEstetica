@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Admins;
 
 class EsteticaController extends Controller
-{
+{   
+
+
+    
+
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +23,25 @@ class EsteticaController extends Controller
 
     }
 
+    /*public function credenciales(Request $request)
+    {
+
+        $datos = $request->all();
+        $valido = false;
+        $admins = Admins::all();
+
+        foreach ($admins as $admin) {
+            if ($admin->email == $datos['email'] && $admin->password == $datos['password']) {
+                $valido = true;
+            }
+        }
+
+        if ($valido) {
+            return view('esteticas.index');
+        } 
+        return view('esteticas.login');
+
+    }*/
     /**
      * Show the form for creating a new resource.
      *
