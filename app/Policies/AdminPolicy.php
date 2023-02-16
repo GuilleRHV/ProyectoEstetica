@@ -2,12 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Estetica;
-use App\Models\User;
 use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class EsteticaPolicy
+class AdminPolicy
 {
     use HandlesAuthorization;
 
@@ -19,17 +18,17 @@ class EsteticaPolicy
      */
     public function viewAny(User $user)
     {
-        return true;
+        //
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Estetica  $estetica
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Estetica $estetica)
+    public function view(User $user, Admin $admin)
     {
         return true;
     }
@@ -42,24 +41,17 @@ class EsteticaPolicy
      */
     public function create(User $user)
     {
-
-        
-        if($user->puesto == "gerente"){
-            return true;
-        }else{
-            return false;
-        }
-        
+        return true;
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Estetica  $estetica
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Estetica $estetica)
+    public function update(User $user, Admin $admin)
     {
         //
     }
@@ -68,10 +60,10 @@ class EsteticaPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Estetica  $estetica
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Estetica $estetica)
+    public function delete(User $user, Admin $admin)
     {
         //
     }
@@ -80,10 +72,10 @@ class EsteticaPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Estetica  $estetica
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Estetica $estetica)
+    public function restore(User $user, Admin $admin)
     {
         //
     }
@@ -92,10 +84,10 @@ class EsteticaPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Estetica  $estetica
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Estetica $estetica)
+    public function forceDelete(User $user, Admin $admin)
     {
         //
     }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("nombre");
             $table->string("email");
             $table->string("password");
+            $table->string("puesto");
             $table->timestamps();
         });
     }

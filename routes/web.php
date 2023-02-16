@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppEjemplos;
 use Illuminate\Support\Facades\Route;
 
@@ -46,8 +47,11 @@ Route::resource('clients', ClientController::class);
 
 Route::resource('users', UserController::class);
 
+
+
 Route::get('/esteticas/credenciales',[EsteticaController::class,'credenciales'])->name('esteticas.credenciales');
 Route::resource('esteticas', EsteticaController::class);
+
 
 /*EJERCICIO VIDEOCLUB*/
 

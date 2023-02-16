@@ -4,14 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
-use App\Models\Estetica;
 
-class EsteticaController extends Controller
-{   
-
-
-    
-
+class AdminController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -19,30 +14,9 @@ class EsteticaController extends Controller
      */
     public function index()
     {
-        $adminList = Admin::all();
-        return view('estetica.index',["adminList" => $adminList]);
-
+        //
     }
 
-    /*public function credenciales(Request $request)
-    {
-
-        $datos = $request->all();
-        $valido = false;
-        $admins = Admin::all();
-
-        foreach ($admins as $admin) {
-            if ($admin->email == $datos['email'] && $admin->password == $datos['password']) {
-                $valido = true;
-            }
-        }
-
-        if ($valido) {
-            return view('esteticas.index');
-        } 
-        return view('esteticas.login');
-
-    }*/
     /**
      * Show the form for creating a new resource.
      *
@@ -50,8 +24,7 @@ class EsteticaController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', Estetica::class);
-        return view("esteticas.create");
+        return view("admin.create");
     }
 
     /**
@@ -63,8 +36,7 @@ class EsteticaController extends Controller
     public function store(Request $request)
     {
         Admin::create($request->all());
-        return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
-     
+        return redirect()->route('admins.index')->with('exito', 'usuario creado correctamente');
     }
 
     /**
@@ -75,8 +47,8 @@ class EsteticaController extends Controller
      */
     public function show($id)
     {
-        $estetica = Estetica::find($id);
-        return view('estetica.show', ['estetica' => $estetica]);
+        $admin = Admin::find($id);
+        return view('admin.show', ['admin' => $admin]);
     }
 
     /**
