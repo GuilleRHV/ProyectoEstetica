@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Admin;
 
-class AdminController extends Controller
+class SocioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,8 +23,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        dd("creando admin");
-       // return view("admin.create");
+        //
     }
 
     /**
@@ -36,11 +34,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->input("puesto")=="cliente"){
-            
-        }
-
-        Admin::create($request->all());
+        //Socio::create($request->all());
         return redirect()->route('admins.index')->with('exito', 'usuario creado correctamente');
     }
 
@@ -52,10 +46,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        
-        $admin = Admin::find($id);
-        //$this->authorize('view', $admin);
-        return view('admin.show', ['admin' => $admin]);
+        //
     }
 
     /**

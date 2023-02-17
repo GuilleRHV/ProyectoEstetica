@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Estetica;
-
+use App\Models\Socio;
 class EsteticaController extends Controller
 {   
 
@@ -53,6 +53,13 @@ class EsteticaController extends Controller
        // $this->authorize('create', Estetica::class);
         return view("estetica.create");
     }
+    public function createsocio()
+    {
+       // $this->authorize('create', Estetica::class);
+        //return view("estetica.create");
+        
+        return view("estetica.createsocio");
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -63,6 +70,14 @@ class EsteticaController extends Controller
     public function store(Request $request)
     {
         Admin::create($request->all());
+        return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
+     
+    }
+
+
+    public function storesocio(Request $request)
+    {
+        Socio::create($request->all());
         return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
      
     }

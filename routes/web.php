@@ -49,6 +49,12 @@ Route::resource('users', UserController::class);
 
 
 
+Route::get('/esteticas/create',[AdminController::class,'create']);
+
+Route::get('/esteticas/createsocio',[EsteticaController::class,'createsocio'])->name('esteticas.createsocio');
+
+Route::get('/esteticas/storesocio',[EsteticaController::class,'storesocio'])->name('esteticas.storesocio');
+
 Route::get('/esteticas/credenciales',[EsteticaController::class,'credenciales'])->name('esteticas.credenciales');
 Route::resource('esteticas', EsteticaController::class);
 

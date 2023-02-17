@@ -18,8 +18,24 @@ class AdminPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        if ($user->puesto == "gerente" || $user->puesto == "recepcionista") {
+            return true;
+        } else {
+            return false;
+        }
+
     }
+
+
+    public function viewSocio(User $user)
+    {
+        if ($user->puesto == "gerente" || $user->puesto == "recepcionista") {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
     /**
      * Determine whether the user can view the model.
