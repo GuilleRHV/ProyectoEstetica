@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tratamiento;
+
+use App\Models\Socio;
 use Illuminate\Http\Request;
 
 class TratamientoController extends Controller
@@ -43,6 +45,13 @@ class TratamientoController extends Controller
         $tratamiento->tipo=$request->input('tipo');
         $tratamiento->save();
         return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
+    }
+
+    public function dartratamiento($id)
+    {
+        $socio = Socio::find($id);
+        $tratamientos = Tratamiento::all();
+        return view('tratamiento.dartratamiento', ['socio' => $socio,'tratamientos' =>$tratamientos]);
     }
 
     /**

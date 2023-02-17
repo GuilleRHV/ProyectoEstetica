@@ -39,7 +39,7 @@
 
         <td>
             @can ('delete', $admin)
-            <form action="{{route('esteticas.destroy',$admin->id)}}" method="post">
+            <form action="{{route('socio.destroy',$admin->id)}}" method="post">
                 @csrf
                 @method('DELETE')
                 <input type="submit" value="Delete" class="btn btn-danger">
@@ -75,7 +75,7 @@
 
         <td>
            
-            <a class="btn btn-success" href="{{route('tratamiento.create',$socio->id)}}">Añadir tratamiento</a>
+            <a class="btn btn-success" href="{{route('tratamiento.dartratamiento',$socio->id)}}">Añadir tratamiento</a>
         
         </td>
         <td>
@@ -90,7 +90,7 @@
 
         <td>
             @can ('delete', $admin)
-            <form action="{{route('esteticas.destroy',$socio->id)}}" method="post">
+            <form action="{{route('socio.destroy',$socio->id)}}" method="post">
                 @csrf
                 @method('DELETE')
                 <input type="submit" value="Delete" class="btn btn-danger">

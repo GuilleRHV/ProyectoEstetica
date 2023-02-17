@@ -107,6 +107,9 @@ class SocioController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
+        $socio = Socio::find($id);
+        $socio->delete();
+        return redirect()->route('esteticas.index')->with("exito", "Eliminado exitosamente");
     }
 }
