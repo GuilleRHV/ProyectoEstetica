@@ -20,7 +20,8 @@ class EsteticaController extends Controller
     public function index()
     {
         $adminList = Admin::all();
-        return view('estetica.index',["adminList" => $adminList]);
+        $socioList = Socio::all();
+        return view('estetica.index',["adminList" => $adminList,"socioList" => $socioList]);
 
     }
 
@@ -61,6 +62,14 @@ class EsteticaController extends Controller
         return view("estetica.createsocio");
     }
 
+    public function createtratamiento()
+    {
+       // $this->authorize('create', Estetica::class);
+        //return view("estetica.create");
+        
+        return view("tratamiento.create");
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -91,9 +100,9 @@ class EsteticaController extends Controller
     public function show($id)
     {
         
-        $estetica = Admin::find($id);
+    //    $estetica = Admin::find($id);
        
-        return view('estetica.show', ['estetica' => $estetica]);
+      //  return view('estetica.show', ['estetica' => $estetica]);
     }
 
     /**

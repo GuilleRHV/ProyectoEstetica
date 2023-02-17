@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tratamientos', function (Blueprint $table) {
             $table->id();
             
-            $table->integer('tratamiento_id')->unique();
+            
             $table->string("nombre");
             $table->float("precio");
             $table->string("tipo");

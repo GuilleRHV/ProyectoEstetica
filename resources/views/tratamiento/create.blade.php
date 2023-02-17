@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h1>Dar de alta adminsss</h1>
+            <h1>Dar de alta un tratamiento</h1>
             <a href="{{route('esteticas.index')}}" class="btn btn-primary">Index</a>
 
             <hr>
@@ -21,7 +21,7 @@
 
 
 
-            <form action="{{route('admin.store')}}" method="post">
+            <form action="{{route('tratamiento.store')}}" method="post">
                 @csrf
 
 
@@ -34,30 +34,27 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="email">email</label>
-                    <input type="text" name="email" id="email" class="form-control" placeholder="Descripcion">
+                    <label for="precio">precio</label>
+                    <input type="text" name="precio" id="precio" class="form-control" placeholder="precio">
                     </label>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">password</label>
-                    <input type="text" name="password" id="password" class="form-control" placeholder="password">
+                    <label for="tipo">tipo</label>
+                    
                     </label>
                 </div>
 
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="puesto" value="gerente">
-                    <label class="form-check-label" for="gerente">Gerente</label>
+                    <input class="form-check-input" type="radio" name="tipo" value="centroestetica" checked>
+                    <label class="form-check-label" for="centroestetica">Centro estetica</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="puesto"  value="recepcionista">
-                    <label class="form-check-label" for="recepcionista">recepcionista</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="puesto"  value="cliente">
-                    <label class="form-check-label" for="cliente">Cliente</label>
-                </div>
+                    <input class="form-check-input" type="radio" name="tipo"  value="peluqueria">
+                    <label class="form-check-label" for="peluqueria">peluqueria</label>
+                </div><br>
+                
 
 
 

@@ -12,30 +12,30 @@
 
             <div class="form-group">
                 <label for="nombre" class="col-form-label" style="font-weight:600;font-size:17px">Nombre</label><br>
-                <label for="nombre" class="col-form-label">{{ $client->nombre ?? '' }}</label>
+                <label for="nombre" class="col-form-label">{{ $admin->nombre ?? '' }}</label>
             </div>
 
             <div class="form-group">
                 <label for="email" class="col-form-label" style="font-weight:600;font-size:17px">Email</label><br>
-                <label for="email" class="col-form-label">{{ $client->email ?? '' }}</label>
+                <label for="email" class="col-form-label">{{ $admin->email ?? '' }}</label>
             </div>
 
             <div class="form-group">
                 <label for="password" class="col-form-label" style="font-weight:600;font-size:17px">Password</label><br>
-                <label for="password" class="col-form-label">{{ $client->password ?? '' }}</label>
+                <label for="password" class="col-form-label">{{ $admin->password ?? '' }}</label>
             </div>
 
             <div class="form-group">
                 <label for="puesto" class="col-form-label" style="font-weight:600;font-size:17px">Puesto</label><br>
-                <label for="puesto" class="col-form-label">{{ $client->puesto ?? '' }}</label>
+                <label for="puesto" class="col-form-label">{{ $admin->puesto ?? '' }}</label>
             </div>
 
            
 
 
 
-            <a href="{{route('clients.index')}}" class="btn btn-primary">Index</a>
-            <a href="{{route('clients.edit',$client->id)}}" class="btn btn-warning">Edit</a>
+            <a href="{{route('esteticas.index')}}" class="btn btn-primary">Index</a>
+            <a href="{{route('admin.edit',$admin->id)}}" class="btn btn-warning">Edit</a>
 
 
 

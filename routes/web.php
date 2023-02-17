@@ -18,6 +18,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EsteticaController;
+use App\Http\Controllers\SocioController;
+use App\Http\Controllers\TratamientoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,12 +50,31 @@ Route::resource('clients', ClientController::class);
 Route::resource('users', UserController::class);
 
 
+// socio
+Route::get('/esteticas/showsocio/{id}',[SocioController::class,'show'])->name('socio.show');
+Route::get('/esteticas/createsocio',[SocioController::class,'create'])->name('socio.create');
+Route::post('/esteticas/storesocio',[SocioController::class,'store'])->name('socio.store');
+Route::get('/esteticas/editsocio/{id}',[SocioController::class,'edit'])->name('socio.edit');
+Route::put('/esteticas/updatesocio/{id}',[SocioController::class,'update'])->name('socio.update');
+//ADMIN
+Route::get('/esteticas/showadmin/{id}',[AdminController::class,'show'])->name('admin.show');
+Route::get('/esteticas/createadmin',[AdminController::class,'create'])->name('admin.create');
+Route::post('/esteticas/storeadmin',[AdminController::class,'store'])->name('admin.store');
+Route::get('/esteticas/editadmin/{id}',[AdminController::class,'edit'])->name('admin.edit');
+Route::put('/esteticas/updateadmin/{id}',[AdminController::class,'update'])->name('admin.update');
 
-Route::get('/esteticas/create',[AdminController::class,'create']);
+//TRATAMIENTOS
+Route::get('/esteticas/createtratamiento',[TratamientoController::class,'create'])->name('tratamiento.create');
+Route::post('/esteticas/storetratamiento',[TratamientoController::class,'store'])->name('tratamiento.store');
 
-Route::get('/esteticas/createsocio',[EsteticaController::class,'createsocio'])->name('esteticas.createsocio');
+//Route::get('/esteticas/createtratamiento',[EsteticaController::class,'createtratamiento'])->name('esteticas.createtratamiento');
 
-Route::get('/esteticas/storesocio',[EsteticaController::class,'storesocio'])->name('esteticas.storesocio');
+
+
+
+
+
+//Route::get('/esteticas/storesocio',[EsteticaController::class,'storesocio'])->name('esteticas.storesocio');
 
 Route::get('/esteticas/credenciales',[EsteticaController::class,'credenciales'])->name('esteticas.credenciales');
 Route::resource('esteticas', EsteticaController::class);

@@ -24,8 +24,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        dd("creando admin");
-       // return view("admin.create");
+        //dd("creando admin");
+        return view("admin.create");
     }
 
     /**
@@ -36,12 +36,10 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->input("puesto")=="cliente"){
-            
-        }
+        
 
         Admin::create($request->all());
-        return redirect()->route('admins.index')->with('exito', 'usuario creado correctamente');
+        return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
     }
 
     /**
@@ -66,7 +64,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $admin = Admin::find($id);
+        return view('admin.edit', ['admin' => $admin]);
     }
 
     /**
@@ -78,7 +77,23 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+
+            "nombre" => "required",
+            "email" => "required",
+            "password" => "required",
+           
+        ], [
+     
+            "nombre.required" => "El nombre es obvligatorio",
+        
+            "password.required" => "El password es obvligatorio",
+            "email.required" => "El email es obvligatorio"
+
+        ]);
+
+        Admin::create($request->all());
+        return redirect()->route('esteticas.index')->with("exito", "Modificado exitosamente");
     }
 
     /**

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tratamiento;
 use Illuminate\Http\Request;
-use App\Models\Socio;
-class SocioController extends Controller
+
+class TratamientoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +24,7 @@ class SocioController extends Controller
      */
     public function create()
     {
-        return view("socio.create");
+        return view("tratamiento.create");
     }
 
     /**
@@ -34,7 +35,13 @@ class SocioController extends Controller
      */
     public function store(Request $request)
     {
-        Socio::create($request->all());
+       // Tratamiento::create($request->all());
+
+        $tratamiento = new Tratamiento();
+        $tratamiento->nombre=$request->input('nombre');
+        $tratamiento->precio=$request->input('precio');
+        $tratamiento->tipo=$request->input('tipo');
+        $tratamiento->save();
         return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
     }
 
@@ -46,9 +53,7 @@ class SocioController extends Controller
      */
     public function show($id)
     {
-        $socio = Socio::find($id);
-       
-        return view('socio.show', ['socio' => $socio]);
+        
     }
 
     /**
@@ -59,8 +64,7 @@ class SocioController extends Controller
      */
     public function edit($id)
     {
-        $socio = Socio::find($id);
-        return view('socio.edit', ['socio' => $socio]);
+        //
     }
 
     /**
@@ -72,31 +76,7 @@ class SocioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-
-            "nombre" => "required",
-            "apellidos" => "required",
-            "edad" => "required",
-            "telefono" => "required",
-           
-        ], [
-     
-            "nombre.required" => "El nombre es obvligatorio",
-            "telefono.required" => "El telefono es obvligatorio",
-            "edad.required" => "El edad es obvligatorio",
-            "apellidos.required" => "El apellidos es obvligatorio"
-
-        ]);
-
-        $socio = Socio::find($id);
-        
-        $socio->nombre = $request->input("nombre");
-        $socio->apellidos = $request->input("apellidos");
-        $socio->edad = $request->input("edad");
-        $socio->telefono = $request->input("telefono");
-
-        $socio->save();
-        return redirect()->route('esteticas.index')->with("exito", "Modificado exitosamente");
+        //
     }
 
     /**
