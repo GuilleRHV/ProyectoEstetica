@@ -12,7 +12,7 @@ class Socio extends Model
     protected $fillable = ["nombre", "apellidos", "edad", "telefono"];
 
     public function tratamientos(){
-        return $this->hasMany(Tratamiento::class); //Relacion 1:N
+        return $this->belongsToMany(Tratamiento::class)->withPivot("fecha"); //Relacion 1:N
       
     }
 }

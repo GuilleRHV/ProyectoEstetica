@@ -12,6 +12,6 @@ class Tratamiento extends Model
 
     public function socios(){
      
-        return $this->belongsToMany(Socio::class); //Relacion n:M
+        return $this->belongsToMany(Socio::class)->withPivot("fecha"); //Relacion n:M
     }
 }

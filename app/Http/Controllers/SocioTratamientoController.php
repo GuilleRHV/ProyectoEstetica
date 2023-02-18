@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\SocioTratamiento;
+use App\Models\Tratamiento;
+use App\Models\Socio;
+
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -37,7 +40,7 @@ class SocioTratamientoController extends Controller
     public function store(Request $request)
     {
 
-        $lista = SocioTratamiento::all();
+        //$lista = SocioTratamiento::all();
         /*$repetido = false;
         foreach ( $lista as $l){
             if ($l->socio_id==$request->input('socio_id') && $l->fecha==$request->input('fecha')){
@@ -47,20 +50,23 @@ class SocioTratamientoController extends Controller
 
 
         $fecha = $request->input('fecha');
-        $socio_id=$request->input('socio_id');
+        $socio_id = $request->input('socio_id');
 
-     
+
 
         $request->validate([
 
             "socio_id" => "required",
             "tratamiento_id" => "required",
-            "fecha" => ["required",
-            Rule::unique("socio_tratamientos")->where(function ($query) use ($fecha,$socio_id) {
-                return $query->where("socio_id", $socio_id)->where("fecha", $fecha);
-            })], 
+            "fecha" => [
+                "required",
+                //No puede haber un socio con 2 tratamientos el mismo dia
+                Rule::unique("socio_tratamientos")->where(function ($query) use ($fecha, $socio_id) {
+                    return $query->where("socio_id", $socio_id)->where("fecha", $fecha);
+                })
+            ],
 
-            
+
 
         ], [
             "socio_id.required" => "El socio_id es obligatorio",
@@ -70,14 +76,31 @@ class SocioTratamientoController extends Controller
 
 
         ]);
-
+//Almacenamos el socio_tratamiento
         $tratamiento = new SocioTratamiento();
         $tratamiento->fecha = $request->input('fecha');
         $tratamiento->socio_id = $request->input('socio_id');
         $tratamiento->tratamiento_id = $request->input('tratamiento_id');
 
 
+
+
+
         $tratamiento->save();
+
+
+        //Enlazar
+
+
+        $socio = Socio::find($request->input("socio_id"));
+        $socio->tratamientos()->syncWithPivotValues($request->input('tratamiento_id'), ["fecha" => $fecha]);
+
+
+        $trat = Tratamiento::find($request->input('tratamiento_id'));
+        $trat->socios()->syncWithPivotValues($request->input('socio_id'), ["fecha" => $fecha]);
+
+
+
         return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
     }
 
