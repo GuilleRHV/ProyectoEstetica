@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SocioTratamiento;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class SocioTratamientoController extends Controller
 {
@@ -45,35 +46,39 @@ class SocioTratamientoController extends Controller
         }*/
 
 
+        $fecha = $request->input('fecha');
+        $socio_id=$request->input('socio_id');
+
+     
 
         $request->validate([
 
-            "socio_id" => "required|unique:socio_tratamientos,fecha",
+            "socio_id" => "required",
             "tratamiento_id" => "required",
-            "fecha" => "required|unique:socio_tratamientos,socio_id"
-            //"fecha" => "required|unique:socio_tratamientos,fecha,".$request->input("fecha")."|unique:socio_tratamientos,socio_id,".$request->input("socio_id")
-           
+            "fecha" => ["required",
+            Rule::unique("socio_tratamientos")->where(function ($query) use ($fecha,$socio_id) {
+                return $query->where("socio_id", $socio_id)->where("fecha", $fecha);
+            })], 
+
+            
+
         ], [
             "socio_id.required" => "El socio_id es obligatorio",
             "tratamiento_id.required" => "El tratamiento_id es obligatorio",
             "fecha.required" => "La fecha es obligatoria",
             "fecha.unique" => "La fecha es unica",
-        
+
 
         ]);
 
         $tratamiento = new SocioTratamiento();
-        $tratamiento->fecha=$request->input('fecha');
-        $tratamiento->socio_id=$request->input('socio_id');
-        $tratamiento->tratamiento_id=$request->input('tratamiento_id');
+        $tratamiento->fecha = $request->input('fecha');
+        $tratamiento->socio_id = $request->input('socio_id');
+        $tratamiento->tratamiento_id = $request->input('tratamiento_id');
 
 
-        if($tratamiento->save()){
-            return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
-        }else{
-            return redirect()->route('tratamiento.dartratamiento')->with('exito', 'usuario creado correctamente');
-        }
-        
+        $tratamiento->save();
+        return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
     }
 
     /**
