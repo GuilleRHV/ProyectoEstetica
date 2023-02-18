@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tratamiento;
-
-use App\Models\Socio;
+use App\Models\SocioTratamiento;
 use Illuminate\Http\Request;
 
-class TratamientoController extends Controller
+class SocioTratamientoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +24,7 @@ class TratamientoController extends Controller
      */
     public function create()
     {
-        return view("tratamiento.create");
+        //
     }
 
     /**
@@ -37,22 +35,39 @@ class TratamientoController extends Controller
      */
     public function store(Request $request)
     {
-       // Tratamiento::create($request->all());
 
-        $tratamiento = new Tratamiento();
-        $tratamiento->nombre=$request->input('nombre');
-        $tratamiento->precio=$request->input('precio');
-        $tratamiento->tipo=$request->input('tipo');
+        $lista = SocioTratamiento::all();
+        /*$repetido = false;
+        foreach ( $lista as $l){
+            if ($l->socio_id==$request->input('socio_id') && $l->fecha==$request->input('fecha')){
+                $repetido=true;
+            }
+        }*/
+
+
+
+        $request->validate([
+
+            "socio_id" => "required|unique:socio_tratamientos,fecha",
+            "tratamiento_id" => "required",
+            "fecha" => "required|unique:socio_tratamientos,socio_id"
+            //"fecha" => "required|unique:socio_tratamientos,fecha,".$request->input("fecha")."|unique:socio_tratamientos,socio_id,".$request->input("socio_id")
+           
+        ], [
+            "socio_id.required" => "El socio_id es obligatorio",
+            "tratamiento_id.required" => "El tratamiento_id es obligatorio",
+            "fecha.required" => "La fecha es obligatoria",
+            "fecha.unique" => "La fecha es unica",
+        
+
+        ]);
+
+        $tratamiento = new SocioTratamiento();
+        $tratamiento->fecha=$request->input('fecha');
+        $tratamiento->socio_id=$request->input('socio_id');
+        $tratamiento->tratamiento_id=$request->input('tratamiento_id');
         $tratamiento->save();
         return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
-    }
-
-    public function dartratamiento($id)
-    {
-        $socio = Socio::find($id);
-    
-       $tratamientos = Tratamiento::all();
-        return view('tratamiento.dartratamiento', ['socio' => $socio,'tratamientos' =>$tratamientos]);
     }
 
     /**
@@ -63,7 +78,7 @@ class TratamientoController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**

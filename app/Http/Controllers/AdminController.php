@@ -91,8 +91,14 @@ class AdminController extends Controller
             "email.required" => "El email es obvligatorio"
 
         ]);
+        $admin = Admin::find($id);
 
-        Admin::create($request->all());
+        $admin->nombre = $request->input("nombre");
+        $admin->password = $request->input("password");
+  
+        $admin->email = $request->input("email");
+
+        $admin->save();
         return redirect()->route('esteticas.index')->with("exito", "Modificado exitosamente");
     }
 

@@ -28,7 +28,7 @@
 
 
                 <div class="form-group">
-                    <label for="nombre">Nombre</label>
+                    <label for="nombre">Nombreee</label>
                     <input type="text" name="nombre" id="nombre" class="form-control" placeholder="{{ $admin->nombre ?? '' }}">
                     </label>
                 </div>

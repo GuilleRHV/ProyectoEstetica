@@ -18,6 +18,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EsteticaController;
+use App\Http\Controllers\SocioTratamientoController;
 use App\Http\Controllers\SocioController;
 use App\Http\Controllers\TratamientoController;
 
@@ -65,9 +66,12 @@ Route::get('/esteticas/editadmin/{id}',[AdminController::class,'edit'])->name('a
 Route::put('/esteticas/updateadmin/{id}',[AdminController::class,'update'])->name('admin.update');
 
 //TRATAMIENTOS
-Route::get('/esteticas/dartratamiento',[TratamientoController::class,'dartratamiento'])->name('tratamiento.dartratamiento');
+Route::get('/esteticas/dartratamiento/{id}',[TratamientoController::class,'dartratamiento'])->name('tratamiento.dartratamiento');
+
 Route::get('/esteticas/createtratamiento',[TratamientoController::class,'create'])->name('tratamiento.create');
 Route::post('/esteticas/storetratamiento',[TratamientoController::class,'store'])->name('tratamiento.store');
+
+Route::post('/esteticas/storesociotratamiento',[SocioTratamientoController::class,'store'])->name('sociotratamiento.store');
 
 //Route::get('/esteticas/createtratamiento',[EsteticaController::class,'createtratamiento'])->name('esteticas.createtratamiento');
 

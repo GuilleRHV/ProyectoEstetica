@@ -16,18 +16,18 @@
             </div>
 
             <div class="form-group">
-                <label for="email" class="col-form-label" style="font-weight:600;font-size:17px">Email</label><br>
-                <label for="email" class="col-form-label">{{ $socio->email ?? '' }}</label>
+                <label for="apellidos" class="col-form-label" style="font-weight:600;font-size:17px">Apellidos</label><br>
+                <label for="apellidos" class="col-form-label">{{ $socio->apellidos ?? '' }}</label>
             </div>
 
             <div class="form-group">
-                <label for="password" class="col-form-label" style="font-weight:600;font-size:17px">Password</label><br>
-                <label for="password" class="col-form-label">{{ $socio->password ?? '' }}</label>
+                <label for="edad" class="col-form-label" style="font-weight:600;font-size:17px">Edad</label><br>
+                <label for="edad" class="col-form-label">{{ $socio->edad ?? '' }}</label>
             </div>
 
             <div class="form-group">
-                <label for="puesto" class="col-form-label" style="font-weight:600;font-size:17px">Puesto</label><br>
-                <label for="puesto" class="col-form-label">{{ $socio->puesto ?? '' }}</label>
+                <label for="telefono" class="col-form-label" style="font-weight:600;font-size:17px">Telefono</label><br>
+                <label for="telefono" class="col-form-label">{{ $socio->telefono ?? '' }}</label>
             </div>
 
            

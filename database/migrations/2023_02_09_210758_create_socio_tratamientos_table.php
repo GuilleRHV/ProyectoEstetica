@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('socios_tratamientos', function (Blueprint $table) {
+        Schema::create('socio_tratamientos', function (Blueprint $table) {
            //No pueden haber 2 primary key
-            // $table->id();
-            $table->string("fecha");
+             $table->id();
+            $table->date("fecha");
 
             $table->unsignedBigInteger('socio_id');//Se crea el campo
             $table->foreign('socio_id')->references('id')->on('socios');//El enlace de fk
@@ -28,8 +28,9 @@ return new class extends Migration
             
             //Mas tarde modificar el tipo 
             
-            $table->primary(['socio_id', 'fecha'])->unique();
-
+            //$table->primary(['socio_id', 'fecha'])->unique();
+            $table->unique(['socio_id', 'fecha']);
+            //$table->unique('fecha');
             $table->timestamps();
         });
     }
@@ -41,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('socios_tratamientos');
+        Schema::dropIfExists('socio_tratamientos');
     }
 };
