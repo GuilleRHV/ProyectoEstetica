@@ -5,13 +5,15 @@
 
 
 
-@can ('create', 'App\Models\Admin')
+@can ('createAdmin', 'App\Models\Admin')
 <a class="btn btn-success" href="{{ route('admin.create') }}" class="btn btn">Dar de alta admins</a>
+@endcan
+@can ('create', 'App\Models\Admin')
 <a class="btn btn-success" href="{{ route('socio.create') }}" class="btn btn">Dar de alta clientes</a>
 <a class="btn btn-success" href="{{route('tratamiento.create')}}" class="btn btn">Dar de alta tratamiento</a>
 @endcan
 <table class="table table-striped table-hover">
-    <h1>Index estetica</h1>
+    <h1>Administradores</h1>
     <tr>
         <td>nombre</td>
         <td>email</td>
@@ -28,7 +30,7 @@
         <td>{{$admin->puesto}}</td>
 
         <td>
-            @can ('update', $admin)
+            @can ('updateAdmin', $admin)
             <a class="btn btn-warning" href="{{route('admin.edit',$admin->id)}}">Editar</a>
             @endcan
         </td>
@@ -39,10 +41,10 @@
 
         <td>
             @can ('delete', $admin)
-            <form action="{{route('socio.destroy',$admin->id)}}" method="post">
+            <form action="{{route('admin.destroy',$admin->id)}}" method="post">
                 @csrf
                 @method('DELETE')
-                <input type="submit" value="Delete" class="btn btn-danger">
+                <input type="submit" value="Eliminar" class="btn btn-danger">
             </form>
             @endcan
         </td>
@@ -93,7 +95,7 @@
             <form action="{{route('socio.destroy',$socio->id)}}" method="post">
                 @csrf
                 @method('DELETE')
-                <input type="submit" value="Delete" class="btn btn-danger">
+                <input type="submit" value="Eliminar" class="btn btn-danger">
             </form>
             @endcan
         </td>

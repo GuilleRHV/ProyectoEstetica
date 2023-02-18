@@ -35,8 +35,9 @@
 
 
             <a href="{{route('esteticas.index')}}" class="btn btn-primary">Index</a>
+            @can ('updateAdmin', $admin)
             <a href="{{route('admin.edit',$admin->id)}}" class="btn btn-warning">Edit</a>
-
+            @endcan
 
 
 

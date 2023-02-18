@@ -57,13 +57,14 @@ Route::get('/esteticas/createsocio',[SocioController::class,'create'])->name('so
 Route::post('/esteticas/storesocio',[SocioController::class,'store'])->name('socio.store');
 Route::get('/esteticas/editsocio/{id}',[SocioController::class,'edit'])->name('socio.edit');
 Route::put('/esteticas/updatesocio/{id}',[SocioController::class,'update'])->name('socio.update');
-Route::delete('/esteticas/updatesocio/{id}',[SocioController::class,'destroy'])->name('socio.destroy');
+Route::delete('/esteticas/deletesocio/{id}',[SocioController::class,'destroy'])->name('socio.destroy');
 //ADMIN
 Route::get('/esteticas/showadmin/{id}',[AdminController::class,'show'])->name('admin.show');
 Route::get('/esteticas/createadmin',[AdminController::class,'create'])->name('admin.create');
 Route::post('/esteticas/storeadmin',[AdminController::class,'store'])->name('admin.store');
 Route::get('/esteticas/editadmin/{id}',[AdminController::class,'edit'])->name('admin.edit');
 Route::put('/esteticas/updateadmin/{id}',[AdminController::class,'update'])->name('admin.update');
+Route::delete('/esteticas/deleteadmin/{id}',[AdminController::class,'destroy'])->name('admin.destroy');
 
 //TRATAMIENTOS
 Route::get('/esteticas/dartratamiento/{id}',[TratamientoController::class,'dartratamiento'])->name('tratamiento.dartratamiento');

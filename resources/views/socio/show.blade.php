@@ -30,18 +30,34 @@
                 <label for="telefono" class="col-form-label">{{ $socio->telefono ?? '' }}</label>
             </div>
 
-            @foreach($socio->tratamientos as $tratamiento)
-            <div class="form-group">
-                <label for="telefono" class="col-form-label" style="font-weight:600;font-size:17px">Nombre tratamiento</label><br>
-                <label for="telefono" class="col-form-label">{{ $tratamiento->nombre }}</label>
-            </div>
-            <div class="form-group">
-                <label for="telefono" class="col-form-label" style="font-weight:600;font-size:17px">Fecha tratamiento</label><br>
-                <label for="telefono" class="col-form-label">{{ $tratamiento->pivot->fecha }}</label>
-            </div>
-            <br>
-            @endforeach
 
+
+            <div class="form-group">
+                <label for="tratamientos" class="col-form-label" style="font-weight:600;font-size:17px">Tratamientos</label><br>
+              
+            </div>
+            <table class="table table-success table-striped">
+                <thead>
+                    <tr>
+                  
+                        <th scope="col">Nombre tratamiento</th>
+                        <th scope="col">fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach($socio->tratamientos as $tratamiento)
+                   
+
+                    <tr>
+                        <td>{{ $tratamiento->nombre }}</td>
+                
+                        <td>{{ $tratamiento->pivot->fecha }}</td>
+                    </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
 
 
 

@@ -36,9 +36,16 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $admin = new Admin();
 
-        Admin::create($request->all());
+        $admin->nombre = $request->input("nombre");
+        $admin->password = password_hash($request->input("password"),PASSWORD_BCRYPT);
+  
+        $admin->email = $request->input("email");
+        $admin->puesto = $request->input("puesto");
+        $admin->save();
+
+       // Admin::create($request->all());
         return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
     }
 
@@ -110,6 +117,9 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
+        $admin = Admin::find($id);
+        $admin->delete();
+        return redirect()->route('esteticas.index')->with("exito", "Eliminado exitosamente");
     }
 }

@@ -68,6 +68,16 @@ class AdminPolicy
         }
     }
 
+    public function createAdmin(User $user)
+    {
+        if ($user->puesto == "gerente") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     /**
      * Determine whether the user can update the model.
      *
@@ -83,6 +93,17 @@ class AdminPolicy
             return false;
         }
     }
+    //los recepcionistas no pueden modificar admins
+    public function updateAdmin(User $user, Admin $admin)
+    {
+        if ($user->puesto == "gerente") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+ 
 
     /**
      * Determine whether the user can delete the model.
