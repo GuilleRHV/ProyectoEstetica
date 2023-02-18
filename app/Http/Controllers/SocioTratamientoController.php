@@ -66,8 +66,14 @@ class SocioTratamientoController extends Controller
         $tratamiento->fecha=$request->input('fecha');
         $tratamiento->socio_id=$request->input('socio_id');
         $tratamiento->tratamiento_id=$request->input('tratamiento_id');
-        $tratamiento->save();
-        return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
+
+
+        if($tratamiento->save()){
+            return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
+        }else{
+            return redirect()->route('tratamiento.dartratamiento')->with('exito', 'usuario creado correctamente');
+        }
+        
     }
 
     /**
