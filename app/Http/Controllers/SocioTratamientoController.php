@@ -76,14 +76,11 @@ class SocioTratamientoController extends Controller
 
 
         ]);
-//Almacenamos el socio_tratamiento
+        //Almacenamos el socio_tratamiento
         $tratamiento = new SocioTratamiento();
         $tratamiento->fecha = $request->input('fecha');
         $tratamiento->socio_id = $request->input('socio_id');
         $tratamiento->tratamiento_id = $request->input('tratamiento_id');
-
-
-
 
 
         $tratamiento->save();
@@ -92,13 +89,23 @@ class SocioTratamientoController extends Controller
         //Enlazar
 
 
+        /*Client::factory()->count(43)->create()->each(function ($client) {
+            $client->orders()->sync(
+                Order::all()->random(4)
+            );
+        });*/
+
+        /*Socio::all()->all(function ($soc){
+            $soc->tratamientos()->sync
+        })*/
+
         $socio = Socio::find($request->input("socio_id"));
-        $socio->tratamientos()->syncWithPivotValues($request->input('tratamiento_id'), ["fecha" => $fecha]);
+        // $socio->tratamientos()->syncWithPivotValues($request->input('tratamiento_id'), ["fecha" => $fecha]);
+        $socio->tratamientos()->attach($request->input('tratamiento_id'), ["fecha" => $fecha]);
 
-
-        $trat = Tratamiento::find($request->input('tratamiento_id'));
-        $trat->socios()->syncWithPivotValues($request->input('socio_id'), ["fecha" => $fecha]);
-
+   //     $trat = Tratamiento::find($request->input('tratamiento_id'));
+        //$trat->socios()->atach($request->input('socio_id'), ["fecha" => $fecha]);
+    //    $trat->socios()->attach($request->input('socio_id'), ["fecha" => $fecha]);
 
 
         return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');

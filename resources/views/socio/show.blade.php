@@ -30,7 +30,19 @@
                 <label for="telefono" class="col-form-label">{{ $socio->telefono ?? '' }}</label>
             </div>
 
-           
+            @foreach($socio->tratamientos as $tratamiento)
+            <div class="form-group">
+                <label for="telefono" class="col-form-label" style="font-weight:600;font-size:17px">Nombre tratamiento</label><br>
+                <label for="telefono" class="col-form-label">{{ $tratamiento->nombre }}</label>
+            </div>
+            <div class="form-group">
+                <label for="telefono" class="col-form-label" style="font-weight:600;font-size:17px">Fecha tratamiento</label><br>
+                <label for="telefono" class="col-form-label">{{ $tratamiento->pivot->fecha }}</label>
+            </div>
+            <br>
+            @endforeach
+
+
 
 
 

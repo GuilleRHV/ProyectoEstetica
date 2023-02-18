@@ -58,7 +58,7 @@
                 @endforeach
 
 
-                <input type="date" id="start" name="fecha" value="2018-07-22" min="2018-01-01" max="2018-12-31"><br><br>
+                <input type="date" id="start" name="fecha" value="2018-07-22" min="2018-01-01" max="2023-12-31"><br><br>
 
                 
 
