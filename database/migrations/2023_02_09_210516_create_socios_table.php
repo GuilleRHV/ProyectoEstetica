@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        //Crea la tabla Socios
         Schema::create('socios', function (Blueprint $table) {
             $table->id();
             $table->string("nombre");
