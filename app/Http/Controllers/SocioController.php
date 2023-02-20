@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Socio;
+use App\Models\SocioTratamiento;
+
 class SocioController extends Controller
 {
     /**
@@ -111,8 +113,10 @@ class SocioController extends Controller
      */
     public function destroy($id)
     {
-       
+    
         $socio = Socio::find($id);
+        $hijo = SocioTratamiento::find($socio->socio_id);
+        $hijo->delete(); 
         $socio->delete();
         return redirect()->route('esteticas.index')->with("exito", "Eliminado exitosamente");
     }

@@ -61,7 +61,7 @@ class SocioTratamientoController extends Controller
             "fecha" => [
                 "required",
                 //No puede haber un socio con 2 tratamientos el mismo dia
-                Rule::unique("socio_tratamientos")->where(function ($query) use ($fecha, $socio_id) {
+                Rule::unique("socio_tratamiento")->where(function ($query) use ($fecha, $socio_id) {
                     return $query->where("socio_id", $socio_id)->where("fecha", $fecha);
                 })
             ],
@@ -86,25 +86,20 @@ class SocioTratamientoController extends Controller
         $tratamiento->save();
 
 
-        //Enlazar
+        //ENLAZAR (SYNCWITHOUTDETACHING O ATTACH)
 
-
-        /*Client::factory()->count(43)->create()->each(function ($client) {
-            $client->orders()->sync(
-                Order::all()->random(4)
-            );
-        });*/
-
-        /*Socio::all()->all(function ($soc){
-            $soc->tratamientos()->sync
-        })*/
+      
+           // $soc->tratamientos()->sync
+      
 
         $socio = Socio::find($request->input("socio_id"));
         // $socio->tratamientos()->syncWithPivotValues($request->input('tratamiento_id'), ["fecha" => $fecha]);
-        $socio->tratamientos()->attach($request->input('tratamiento_id'), ["fecha" => $fecha]);
+
+     //   syncWithoutDetaching 
+
+        $socio->tratamientos()->syncWithoutDetaching($request->input('tratamiento_id'), ["fecha" => $fecha]);
 
    //     $trat = Tratamiento::find($request->input('tratamiento_id'));
-        //$trat->socios()->atach($request->input('socio_id'), ["fecha" => $fecha]);
     //    $trat->socios()->attach($request->input('socio_id'), ["fecha" => $fecha]);
 
 
