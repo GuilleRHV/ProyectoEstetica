@@ -37,7 +37,7 @@ class SocioTratamientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    //almacena una fila de la tabla socioTratamiento
+    //almacena una fila de la tabla socioTratamiento que relaciona socios con tratamientos en una fecha
     public function store(Request $request)
     {
 
