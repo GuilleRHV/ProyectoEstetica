@@ -11,6 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
+    //Crea la tabla Tratamientos
     public function up()
     {
         Schema::create('tratamientos', function (Blueprint $table) {
