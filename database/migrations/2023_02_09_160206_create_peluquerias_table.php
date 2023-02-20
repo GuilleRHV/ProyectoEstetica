@@ -11,6 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
+    //crea la tabla de las Peluquerias
     public function up()
     {
         Schema::create('peluquerias', function (Blueprint $table) {
