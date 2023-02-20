@@ -23,6 +23,7 @@ class SocioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Devuelve la vista create.
     public function create()
     {
         return view("socio.create");
@@ -34,6 +35,7 @@ class SocioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //Crea un nuevo Socio a partir de los datos de la peticion enviada por el formulario.
     public function store(Request $request)
     {
         Socio::create($request->all());
@@ -46,6 +48,7 @@ class SocioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //Recupera un Socio a partir de un id dado y lo muestra con una vista
     public function show($id)
     {
         $socio = Socio::find($id);
@@ -63,6 +66,7 @@ class SocioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     //Recupera un Socio y devuelve la vista para editarlo.
     public function edit($id)
     {
         $socio = Socio::find($id);
@@ -76,6 +80,7 @@ class SocioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     //Actualiza un Socio con los campos de la peticion
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -111,6 +116,7 @@ class SocioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //Busca por id un Socio y lo borra de la tabla
     public function destroy($id)
     {
     
