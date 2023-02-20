@@ -11,6 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
+    //Crea la tabla admins
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
