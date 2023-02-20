@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 
 //Este es el AdminController, con métodos que devuelven vistas o recuperan datos del modelo.
-//Los administradores que dirigen la página (con los que te logeas, son gerentes o recepcionistas
+//Los administradores que dirigen la página (con los que te logeas, son gerentes o recepcionistas)
 class AdminController extends Controller
 {
     /**
