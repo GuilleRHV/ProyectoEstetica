@@ -14,6 +14,19 @@
 @endcan
 <table class="table table-striped table-hover">
     <h1>Administradores</h1>
+    @if($message = Session::get('adminexito'))
+    <div class="alert alert-success">
+        <h4>{{$message}}</h4>
+    </div>
+    @endif
+    @if($message = Session::get('borraradminexito'))
+    <div class="alert alert-success">
+        <h4>{{$message}}</h4>
+    </div>
+    @endif
+
+
+
     <tr>
         <td>nombre</td>
         <td>email</td>
@@ -57,8 +70,21 @@
 
 <table class="table table-striped table-hover">
     <h1>Socios</h1>
+    @if($message = Session::get('socioexito'))
+    <div class="alert alert-success">
+        <h4>{{$message}}</h4>
+    </div>
+    @endif
+
+    @if($message = Session::get('borrarsocioexito'))
+    <div class="alert alert-success">
+        <h4>{{$message}}</h4>
+    </div>
+    @endif
+
+
     <tr>
- 
+
         <td>nombre</td>
         <td>apellidos</td>
         <td>edad</td>
@@ -73,12 +99,12 @@
         <td>{{$socio->edad}}</td>
         <td>{{$socio->telefono}}</td>
 
-        
+
 
         <td>
-           
+
             <a class="btn btn-success" href="{{route('tratamiento.dartratamiento',$socio->id)}}">Añadir tratamiento</a>
-        
+
         </td>
         <td>
             @can ('update', $admin)

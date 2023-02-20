@@ -60,13 +60,7 @@
                                                                                                   }      ?>>
                     <label class="form-check-label" for="recepcionista">recepcionista</label>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="puesto"  value="cliente" <?php 
-                                                                                                  if($admin->puesto=="cliente"){
-                                                                                                    echo 'checked';
-                                                                                                  }      ?>>
-                    <label class="form-check-label" for="cliente">Cliente</label>
-                </div>
+               
 
 
 

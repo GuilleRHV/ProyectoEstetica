@@ -53,7 +53,7 @@
                 @foreach($tratamientos as $t)
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="tratamiento_id" value="{{ $t->id ?? '' }}">
-                    <label class="form-check-label" for="cliente">{{ $t->nombre ?? '' }}</label>
+                    <label class="form-check-label" for="trat">{{ $t->nombre ?? '' }}</label>
                 </div><br>
                 @endforeach
 

@@ -46,7 +46,7 @@ class AdminController extends Controller
         $admin->save();
 
        // Admin::create($request->all());
-        return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
+        return redirect()->route('esteticas.index')->with('adminexito', 'administrador creado correctamente');
     }
 
     /**
@@ -120,6 +120,6 @@ class AdminController extends Controller
        
         $admin = Admin::find($id);
         $admin->delete();
-        return redirect()->route('esteticas.index')->with("exito", "Eliminado exitosamente");
+        return redirect()->route('esteticas.index')->with("borraradminexito", "Administrador eliminado exitosamente");
     }
 }

@@ -25,7 +25,6 @@
                 @csrf
                 @method("PUT")
 
-                ["nombre", "apellidos", "edad", "telefono"];
 
                 <div class="form-group">
                     <label for="nombre">Nombre</label>

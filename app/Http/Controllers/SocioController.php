@@ -37,7 +37,7 @@ class SocioController extends Controller
     public function store(Request $request)
     {
         Socio::create($request->all());
-        return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
+        return redirect()->route('esteticas.index')->with('socioexito', 'Socio dado de alta correctamente');
     }
 
     /**
@@ -115,9 +115,9 @@ class SocioController extends Controller
     {
     
         $socio = Socio::find($id);
-        $hijo = SocioTratamiento::find($socio->socio_id);
-        $hijo->delete(); 
+        //$hijo = SocioTratamiento::find($socio->socio_id);
+        //$hijo->delete(); 
         $socio->delete();
-        return redirect()->route('esteticas.index')->with("exito", "Eliminado exitosamente");
+        return redirect()->route('esteticas.index')->with("borrarsocioexito", "Socio dado de baja exitosamente");
     }
 }
