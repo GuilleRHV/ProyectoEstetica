@@ -42,6 +42,7 @@
                   
                         <th scope="col">Nombre tratamiento</th>
                         <th scope="col">fecha</th>
+                        <th scope="col">precio</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,11 +54,17 @@
                         <td>{{ $tratamiento->nombre }}</td>
                 
                         <td>{{ $tratamiento->pivot->fecha }}</td>
+                        <td>{{ $tratamiento->precio }}</td>
                     </tr>
                     @endforeach
 
                 </tbody>
             </table>
+
+            <div class="form-group">
+                <label for="tratamientos" class="col-form-label" style="font-weight:600;font-size:17px">Dinero total gastado</label><br>
+                <label for="telefono" class="col-form-label">{{ $dinerototalgastado }}</label>
+            </div>
 
 
 

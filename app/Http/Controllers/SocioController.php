@@ -47,8 +47,12 @@ class SocioController extends Controller
     public function show($id)
     {
         $socio = Socio::find($id);
+        $dinerototalgastado=0;
+        foreach ($socio->tratamientos as $tr){
+            $dinerototalgastado=$dinerototalgastado+$tr->precio;
+        }
        
-        return view('socio.show', ['socio' => $socio]);
+        return view('socio.show', ['socio' => $socio,"dinerototalgastado" => $dinerototalgastado]);
     }
 
     /**
