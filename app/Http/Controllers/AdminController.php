@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 
+//Este es el AdminController, con métodos que devuelven vistas o recuperan datos del modelo.
+//Los administradores que dirigen la página (con los que te logeas, son gerentes o recepcionistas
 class AdminController extends Controller
 {
     /**
@@ -22,6 +24,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Devuelve la vista create.
     public function create()
     {
         //dd("creando admin");
@@ -34,6 +37,7 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //Crea un nuevo Aministrador a partir de los datos de la peticion enviada por el formulario.
     public function store(Request $request)
     {
         $admin = new Admin();
@@ -55,6 +59,8 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
+    //Recupera un admin a partir de un id dado y lo muestra con una vista
     public function show($id)
     {
         
@@ -69,6 +75,7 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //Recupera un admin y devuelve la vista para editarlo.
     public function edit($id)
     {
         $admin = Admin::find($id);
@@ -82,6 +89,8 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
+    //Actualiza un admin con los campos de la peticion
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -115,6 +124,7 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //Busca por id un admin y lo borra de la tabla
     public function destroy($id)
     {
        
