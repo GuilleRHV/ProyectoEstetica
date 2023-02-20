@@ -7,6 +7,7 @@ use App\Models\Tratamiento;
 use App\Models\Socio;
 use Illuminate\Http\Request;
 
+//Tratamiento: Hay que darlos de alta para poder asignarlos a los socios.
 class TratamientoController extends Controller
 {
     /**
@@ -24,6 +25,7 @@ class TratamientoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Devuelve la vista create.
     public function create()
     {
         return view("tratamiento.create");
@@ -35,6 +37,7 @@ class TratamientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //Almacena un tratamiento en la base de datos
     public function store(Request $request)
     {
        // Tratamiento::create($request->all());
@@ -46,7 +49,8 @@ class TratamientoController extends Controller
         $tratamiento->save();
         return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
     }
-
+    
+    //una funcion para asignar el tratamiento con el socio
     public function dartratamiento($id)
     {
         $socio = Socio::find($id);
