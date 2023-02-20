@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+        //Crea la tabla de los centros de estetica con sus campos
         Schema::create('centroesteticas', function (Blueprint $table) {
             $table->id();
             $table->integer("nsalas");
