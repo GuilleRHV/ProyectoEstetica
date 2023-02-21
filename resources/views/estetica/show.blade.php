@@ -1,11 +1,11 @@
 @extends('layouts.app')
-
+{{-- Muestra los detalles de un Socio--}}
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <h1>Detalles del socio</h1>
-
+       
 
 
 
