@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+
+{{-- Formulario para dar de alta un admin --}}
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
