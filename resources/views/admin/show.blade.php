@@ -1,4 +1,5 @@
 @extends('layouts.app')
+{{-- muestra los detalles de un Admnistrador --}}
 
 @section('content')
 <div class="container">
