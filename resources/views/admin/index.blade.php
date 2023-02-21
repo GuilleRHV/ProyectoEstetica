@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{--Vista que muestra todos los admins --}}
 @section('content')
 
 
