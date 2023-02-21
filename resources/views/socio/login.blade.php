@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{-- Formulario para hacer login con un socio --}}
 @section('content')
 
 <main class="py-4">

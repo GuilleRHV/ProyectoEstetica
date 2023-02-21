@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{-- Vista para asginar un tratamiento a un socio --}}
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
