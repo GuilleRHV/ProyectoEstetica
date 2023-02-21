@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+{{-- Vista para hacer Login--}}
+
 @section('content')
 
 <main class="py-4">
