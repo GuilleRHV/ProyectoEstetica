@@ -9,21 +9,13 @@ use App\Models\Admin;
 //Los administradores que dirigen la página (con los que te logeas, son gerentes o recepcionistas)
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     //Devuelve la vista create.
     public function create()
     {
@@ -31,12 +23,7 @@ class AdminController extends Controller
         return view("admin.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     //Crea un nuevo Aministrador a partir de los datos de la peticion enviada por el formulario.
     public function store(Request $request)
     {
@@ -49,16 +36,11 @@ class AdminController extends Controller
         $admin->puesto = $request->input("puesto");
         $admin->save();
 
-       // Admin::create($request->all());
+      
         return redirect()->route('esteticas.index')->with('adminexito', 'administrador creado correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     
     //Recupera un admin a partir de un id dado y lo muestra con una vista
     public function show($id)
@@ -69,12 +51,7 @@ class AdminController extends Controller
         return view('admin.show', ['admin' => $admin]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     //Recupera un admin y devuelve la vista para editarlo.
     public function edit($id)
     {
@@ -82,13 +59,7 @@ class AdminController extends Controller
         return view('admin.edit', ['admin' => $admin]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     
     //Actualiza un admin con los campos de la peticion
     public function update(Request $request, $id)
@@ -118,12 +89,7 @@ class AdminController extends Controller
         return redirect()->route('esteticas.index')->with("exito", "Modificado exitosamente");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     //Busca por id un admin y lo borra de la tabla
     public function destroy($id)
     {
