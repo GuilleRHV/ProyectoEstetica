@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+   
     public function up()
     {//Crea la tabla socio_tratamiento
         Schema::create('socio_tratamiento', function (Blueprint $table) {
@@ -25,21 +21,14 @@ return new class extends Migration
             $table->foreign('tratamiento_id')->references('id')->on('tratamientos')->onDelete('cascade');//El enlace de fk
 
 
-            
-            //Mas tarde modificar el tipo 
-            
-            //$table->primary(['socio_id', 'fecha'])->unique();
+            //hacemos que la combinacion de los campos socio_id y fecha sean unique
             $table->unique(['socio_id', 'fecha']);
-            //$table->unique('fecha');
+            
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    
     public function down()
     {
         Schema::dropIfExists('socio_tratamiento');
