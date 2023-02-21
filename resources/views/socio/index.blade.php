@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{-- Index que muestra una lista de todos los administradores --}}
 @section('content')
 
 
