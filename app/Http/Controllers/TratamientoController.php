@@ -6,6 +6,7 @@ use App\Models\Tratamiento;
 
 use App\Models\Socio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 //Tratamiento: Hay que darlos de alta para poder asignarlos a los socios.
 class TratamientoController extends Controller
@@ -43,6 +44,7 @@ class TratamientoController extends Controller
         $socio = Socio::find($id);
     
        $tratamientos = Tratamiento::all();
+       
         return view('tratamiento.dartratamiento', ['socio' => $socio,'tratamientos' =>$tratamientos]);
     }
 

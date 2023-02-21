@@ -54,7 +54,7 @@
                         <td>{{ $tratamiento->nombre }}</td>
                 
                         <td>{{ $tratamiento->pivot->fecha }}</td>
-                        <td>{{ $tratamiento->precio }}</td>
+                        <td>{{ $tratamiento->precio }}€</td>
                     </tr>
                     @endforeach
 
@@ -63,7 +63,7 @@
 
             <div class="form-group">
                 <label for="tratamientos" class="col-form-label" style="font-weight:600;font-size:17px">Dinero total gastado</label><br>
-                <label for="telefono" class="col-form-label">{{ $dinerototalgastado }}</label>
+                <label for="telefono" class="col-form-label">{{ $dinerototalgastado }} €</label>
             </div>
 
 

@@ -52,7 +52,7 @@ class SocioTratamientoController extends Controller
 
         ], [
             "socio_id.required" => "El socio_id es obligatorio",
-            "tratamiento_id.required" => "El tratamiento_id es obligatorio",
+            "tratamiento_id.required" => "El tratamiento es obligatorio",
             "fecha.required" => "La fecha es obligatoria",
             "fecha.unique" => "La fecha es unica",
 
@@ -60,6 +60,8 @@ class SocioTratamientoController extends Controller
         ]);
         //Almacenamos el socio_tratamiento
         $tratamiento = new SocioTratamiento();
+
+        
         $tratamiento->fecha = $request->input('fecha');
         $tratamiento->socio_id = $request->input('socio_id');
         $tratamiento->tratamiento_id = $request->input('tratamiento_id');
