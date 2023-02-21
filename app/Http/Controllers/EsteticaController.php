@@ -10,7 +10,7 @@ class EsteticaController extends Controller
 {   
 
 
-    
+    //Devuelve una vista que muestra una lista con todos los Admins y todos los Socios
    
     public function index()
     {
@@ -19,25 +19,30 @@ class EsteticaController extends Controller
         return view('estetica.index',["adminList" => $adminList,"socioList" => $socioList]);
 
     }
-
+    
+    
     public function __construct()
     {
         $this->middleware('auth');
     }
 
     
-    
+    //Devuelve la vista para dar de alta un admin
     public function create()
     {
         return view("estetica.create");
     }
+    
+    
+    //Devuelve la vista para crear un Socio.
     public function createsocio()
     {
       
         
         return view("estetica.createsocio");
     }
-
+    
+    //Devuelve la vista para crear un Tratamiento
     public function createtratamiento()
     {
       
@@ -46,6 +51,7 @@ class EsteticaController extends Controller
     }
 
     
+    //Almacena un Admin en la tabla a partir de la peticion
     public function store(Request $request)
     {
         Admin::create($request->all());
@@ -53,7 +59,7 @@ class EsteticaController extends Controller
      
     }
 
-
+    //Almacena un Socio en la tabla a partir de la peticion
     public function storesocio(Request $request)
     {
         Socio::create($request->all());
@@ -68,7 +74,7 @@ class EsteticaController extends Controller
    
     }
 
-    
+    //Devuelve la vista para editar un Administrador
     public function edit($id)
     {
         
@@ -76,7 +82,7 @@ class EsteticaController extends Controller
         return view('estetica.edit', ['estetica' => $estetica]);
     }
 
-   
+   //Almacena en la tabla los cambios de un administrasdor a partir de la peticion
     public function update(Request $request, $id)
     {
         
@@ -106,7 +112,7 @@ class EsteticaController extends Controller
         return redirect()->route('esteticas.index')->with("exito", "Modificado exitosamente");
     }
 
-   
+   //Borra un Admin de la tabla
     public function destroy($id)
     {
         $this->authorize('delete', Estetica::class);
