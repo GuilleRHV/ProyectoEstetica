@@ -8,33 +8,20 @@ use App\Models\SocioTratamiento;
 
 class SocioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     //Devuelve la vista create.
     public function create()
     {
         return view("socio.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     //Crea un nuevo Socio a partir de los datos de la peticion enviada por el formulario.
     public function store(Request $request)
     {
@@ -42,12 +29,7 @@ class SocioController extends Controller
         return redirect()->route('esteticas.index')->with('socioexito', 'Socio dado de alta correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     //Recupera un Socio a partir de un id dado y lo muestra con una vista
     public function show($id)
     {
@@ -60,12 +42,7 @@ class SocioController extends Controller
         return view('socio.show', ['socio' => $socio,"dinerototalgastado" => $dinerototalgastado]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
      //Recupera un Socio y devuelve la vista para editarlo.
     public function edit($id)
     {
@@ -73,13 +50,7 @@ class SocioController extends Controller
         return view('socio.edit', ['socio' => $socio]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
      //Actualiza un Socio con los campos de la peticion
     public function update(Request $request, $id)
     {
@@ -110,12 +81,7 @@ class SocioController extends Controller
         return redirect()->route('esteticas.index')->with("exito", "Modificado exitosamente");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     //Busca por id un Socio y lo borra de la tabla
     public function destroy($id)
     {
