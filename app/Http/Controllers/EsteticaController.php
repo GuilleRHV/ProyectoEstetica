@@ -11,12 +11,7 @@ class EsteticaController extends Controller
 
 
     
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         $adminList = Admin::all();
@@ -30,57 +25,27 @@ class EsteticaController extends Controller
         $this->middleware('auth');
     }
 
-    /*public function credenciales(Request $request)
-    {
-
-        $datos = $request->all();
-        $valido = false;
-        $admins = Admin::all();
-
-        foreach ($admins as $admin) {
-            if ($admin->email == $datos['email'] && $admin->password == $datos['password']) {
-                $valido = true;
-            }
-        }
-
-        if ($valido) {
-            return view('esteticas.index');
-        } 
-        return view('esteticas.login');
-
-    }*/
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    
     public function create()
     {
-       // $this->authorize('create', Estetica::class);
         return view("estetica.create");
     }
     public function createsocio()
     {
-       // $this->authorize('create', Estetica::class);
-        //return view("estetica.create");
+      
         
         return view("estetica.createsocio");
     }
 
     public function createtratamiento()
     {
-       // $this->authorize('create', Estetica::class);
-        //return view("estetica.create");
+      
         
         return view("tratamiento.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         Admin::create($request->all());
@@ -96,26 +61,14 @@ class EsteticaController extends Controller
      
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         
-    //    $estetica = Admin::find($id);
-       
-      //  return view('estetica.show', ['estetica' => $estetica]);
+   
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         
@@ -123,13 +76,7 @@ class EsteticaController extends Controller
         return view('estetica.edit', ['estetica' => $estetica]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
         
@@ -159,12 +106,7 @@ class EsteticaController extends Controller
         return redirect()->route('esteticas.index')->with("exito", "Modificado exitosamente");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
         $this->authorize('delete', Estetica::class);
