@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+{{-- Index que muestra todos los Admins y Socios y opciones para su visualizacion o gestion --}}
 
 
 @can ('createAdmin', 'App\Models\Admin')
