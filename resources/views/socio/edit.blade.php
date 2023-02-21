@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{-- Formulario para editar un Socio --}}
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
