@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         //    OrderSeeder::class,
           //  ClientOrderSeeder::class
             //StudySeeder::class
-            
+            AdminSeeder::class
         ]);
     }
 }
