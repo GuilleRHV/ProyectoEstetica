@@ -11,43 +11,24 @@ use Illuminate\Validation\Rule;
 
 class SocioTratamientoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     //almacena una fila de la tabla socioTratamiento que relaciona socios con tratamientos en una fecha
     public function store(Request $request)
     {
 
-        //$lista = SocioTratamiento::all();
-        /*$repetido = false;
-        foreach ( $lista as $l){
-            if ($l->socio_id==$request->input('socio_id') && $l->fecha==$request->input('fecha')){
-                $repetido=true;
-            }
-        }*/
+        
 
 
         $fecha = $request->input('fecha');
@@ -87,66 +68,38 @@ class SocioTratamientoController extends Controller
         $tratamiento->save();
 
 
-        //ENLAZAR (SYNCWITHOUTDETACHING O ATTACH)
-
-      
-           // $soc->tratamientos()->sync
+       
       
 
         $socio = Socio::find($request->input("socio_id"));
-        // $socio->tratamientos()->syncWithPivotValues($request->input('tratamiento_id'), ["fecha" => $fecha]);
-
-     //   syncWithoutDetaching 
-
+        
         $socio->tratamientos()->syncWithoutDetaching($request->input('tratamiento_id'), ["fecha" => $fecha]);
 
-   //     $trat = Tratamiento::find($request->input('tratamiento_id'));
-    //    $trat->socios()->attach($request->input('socio_id'), ["fecha" => $fecha]);
+   
 
 
         return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
         //
