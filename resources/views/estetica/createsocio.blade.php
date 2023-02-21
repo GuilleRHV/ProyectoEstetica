@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+{{-- Vista para crear un socio --}}
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
