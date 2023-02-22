@@ -86,7 +86,19 @@ class SocioTratamientoController extends Controller
     
     public function show($id)
     {
-        //
+     /*   $sociotratamiento = SocioTratamiento::all();
+        foreach( $sociotratamiento as $st){
+            if($sociotratamiento->socio_id=$id);
+        }
+        $sociotratamiento->socio
+        $dinerototalgastado=0;
+        foreach ($socio->tratamientos as $tr){
+            $dinerototalgastado=$dinerototalgastado+$tr->precio;
+        }
+      // $sociotratamiento = SocioTratamiento::all();
+   
+        return view('socio.show', ['socio' => $socio,"dinerototalgastado" => $dinerototalgastado]);
+    */
     }
 
     
@@ -102,8 +114,20 @@ class SocioTratamientoController extends Controller
     }
 
    
-    public function destroy($id)
+    public function destroy($datos)
     {
-        //
+        $socio_id = $datos["socio_id"];
+        $tratamiento_id=$datos["tratamiento_id"];
+        $sociotratamiento = SocioTratamiento::all();
+
+        foreach($sociotratamiento as $st){
+            if ($st->socio_id == $socio_id && $st->tratamiento_id == $tratamiento_id){
+             $st->delete();   
+            }
+        }
+        //$hijo = sociotratamientoTratamiento::find($sociotratamiento->sociotratamiento_id);
+        //$hijo->delete(); 
+        //$sociotratamiento->delete();
+        return redirect()->route('esteticas.index')->with("borrarsociotratamientoexito", "sociotratamiento dado de baja exitosamente");
     }
 }

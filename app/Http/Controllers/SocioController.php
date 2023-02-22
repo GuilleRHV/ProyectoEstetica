@@ -38,7 +38,8 @@ class SocioController extends Controller
         foreach ($socio->tratamientos as $tr){
             $dinerototalgastado=$dinerototalgastado+$tr->precio;
         }
-       
+      // $sociotratamiento = SocioTratamiento::all();
+   
         return view('socio.show', ['socio' => $socio,"dinerototalgastado" => $dinerototalgastado]);
     }
 

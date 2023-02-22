@@ -36,12 +36,12 @@
 
             <div class="form-group">
                 <label for="tratamientos" class="col-form-label" style="font-weight:600;font-size:17px">Tratamientos</label><br>
-              
+
             </div>
             <table class="table table-success table-striped">
                 <thead>
                     <tr>
-                  
+                        <th scope="col">ID</th>
                         <th scope="col">Nombre tratamiento</th>
                         <th scope="col">fecha</th>
                         <th scope="col">precio</th>
@@ -50,13 +50,21 @@
                 <tbody>
 
                     @foreach($socio->tratamientos as $tratamiento)
-                   
+
 
                     <tr>
+                        <td>{{ $tratamiento->id }}</td>
                         <td>{{ $tratamiento->nombre }}</td>
-                
+
                         <td>{{ $tratamiento->pivot->fecha }}</td>
                         <td>{{ $tratamiento->precio }}€</td>
+                        <td>
+                            <form action="{{route('sociotratamiento.destroy',['tratamiento_id'=>$tratamiento->pivot->tratamiento_id,'socio_id'=>$tratamiento->pivot->socio_id])}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Eliminar" class="btn btn-danger">
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
 
