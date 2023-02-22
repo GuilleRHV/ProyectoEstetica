@@ -68,7 +68,7 @@ class EsteticaPolicy
      */
     public function delete(User $user, Estetica $estetica)
     {
-       
+       return true;
     }
 
     /**

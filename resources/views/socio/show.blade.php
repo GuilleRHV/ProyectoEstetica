@@ -9,7 +9,11 @@
             <h1>Detalle del socio</h1>
 
 
-
+            @if($message = Session::get('tratamientoeliminado'))
+            <div class="alert alert-success">
+                <h4>{{$message}}</h4>
+            </div>
+            @endif
 
 
             <div class="form-group">
@@ -41,7 +45,7 @@
             <table class="table table-success table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+
                         <th scope="col">Nombre tratamiento</th>
                         <th scope="col">fecha</th>
                         <th scope="col">precio</th>
@@ -53,13 +57,13 @@
 
 
                     <tr>
-                        <td>{{ $tratamiento->id }}</td>
+
                         <td>{{ $tratamiento->nombre }}</td>
 
                         <td>{{ $tratamiento->pivot->fecha }}</td>
                         <td>{{ $tratamiento->precio }}€</td>
                         <td>
-                            <form action="{{route('sociotratamiento.destroy',['tratamiento_id'=>$tratamiento->pivot->tratamiento_id,'socio_id'=>$tratamiento->pivot->socio_id])}}" method="post">
+                            <form action="{{route('sociotratamiento.destroy',['fecha'=>$tratamiento->pivot->fecha,'socio_id'=>$tratamiento->pivot->socio_id])}}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" value="Eliminar" class="btn btn-danger">

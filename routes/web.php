@@ -72,7 +72,7 @@ Route::get('/esteticas/dartratamiento/{id}',[TratamientoController::class,'dartr
 Route::get('/esteticas/createtratamiento',[TratamientoController::class,'create'])->name('tratamiento.create');
 Route::post('/esteticas/storetratamiento',[TratamientoController::class,'store'])->name('tratamiento.store');
 Route::post('/esteticas/storesociotratamiento',[SocioTratamientoController::class,'store'])->name('sociotratamiento.store');
-Route::delete('/esteticas/deletesociotratamiento/{[tratamiento_id,socio_id]}',[SocioTratamientoController::class,'destroy'])->name('sociotratamiento.destroy');
+Route::delete('/esteticas/deletesociotratamiento/{fecha}/{socio_id}',[SocioTratamientoController::class,'destroy'])->name('sociotratamiento.destroy');
 
 //ESTETICAS (INDEX)
 Route::get('/esteticas/credenciales',[EsteticaController::class,'credenciales'])->name('esteticas.credenciales');
