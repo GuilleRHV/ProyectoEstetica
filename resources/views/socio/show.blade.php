@@ -15,28 +15,29 @@
             </div>
             @endif
 
+            <hr>
 
             <div class="form-group">
                 <label for="nombre" class="col-form-label" style="font-weight:600;font-size:17px">Nombre</label><br>
                 <label for="nombre" class="col-form-label">{{ $socio->nombre ?? '' }}</label>
             </div>
-
+            <hr>
             <div class="form-group">
                 <label for="apellidos" class="col-form-label" style="font-weight:600;font-size:17px">Apellidos</label><br>
                 <label for="apellidos" class="col-form-label">{{ $socio->apellidos ?? '' }}</label>
             </div>
-
+            <hr>
             <div class="form-group">
                 <label for="edad" class="col-form-label" style="font-weight:600;font-size:17px">Edad</label><br>
                 <label for="edad" class="col-form-label">{{ $socio->edad ?? '' }}</label>
             </div>
-
+            <hr>
             <div class="form-group">
                 <label for="telefono" class="col-form-label" style="font-weight:600;font-size:17px">Telefono</label><br>
                 <label for="telefono" class="col-form-label">{{ $socio->telefono ?? '' }}</label>
             </div>
 
-
+            <hr>
 
             <div class="form-group">
                 <label for="tratamientos" class="col-form-label" style="font-weight:600;font-size:17px">Tratamientos</label><br>
@@ -83,8 +84,8 @@
 
 
 
-            <a href="{{route('esteticas.index')}}" class="btn btn-primary">Index</a>
-            <a href="{{route('socio.edit',$socio->id)}}" class="btn btn-warning">Edit</a>
+            <a href="{{route('esteticas.index')}}" class="btn btn-primary">Inicio</a>
+            <a href="{{route('socio.edit',$socio->id)}}" class="btn btn-warning">Editar</a>
 
 
 

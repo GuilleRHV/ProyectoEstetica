@@ -4,7 +4,6 @@
 
 {{-- Index que muestra todos los Admins y Socios y opciones para su visualizacion o gestion --}}
 
-
 @can ('createAdmin', 'App\Models\Admin')
 <a class="btn btn-success" href="{{ route('admin.create') }}" class="btn btn">Dar de alta admins</a>
 @endcan
@@ -12,8 +11,13 @@
 <a class="btn btn-success" href="{{ route('socio.create') }}" class="btn btn">Dar de alta clientes</a>
 <a class="btn btn-success" href="{{route('tratamiento.create')}}" class="btn btn">Dar de alta tratamiento</a>
 @endcan
+<br>
+<hr>
+<br>
+
 <table class="table table-striped table-hover">
-    <h1>Administradores</h1>
+    <h1 class="text-center">Administradores</h1>
+    <br>
     @if($message = Session::get('adminexito'))
     <div class="alert alert-success">
         <h4>{{$message}}</h4>
@@ -65,11 +69,13 @@
     </tr>
     @endforeach
 </table>
+<br>
+<hr>
+<br>
 
 
-
-<table class="table table-striped table-hover">
-    <h1>Socios</h1>
+<table class="table table-striped table-dark table-hover">
+    <h1 class="text-center">Socios</h1>
     @if($message = Session::get('socioexito'))
     <div class="alert alert-success">
         <h4>{{$message}}</h4>
@@ -129,6 +135,8 @@
     </tr>
     @endforeach
 </table>
+
+
 
 
 

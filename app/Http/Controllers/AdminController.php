@@ -19,25 +19,29 @@ class AdminController extends Controller
     //Devuelve la vista create.
     public function create()
     {
+
         //dd("creando admin");
         return view("admin.create");
+        
     }
 
     
     //Crea un nuevo Aministrador a partir de los datos de la peticion enviada por el formulario.
     public function store(Request $request)
     {
+
         $admin = new Admin();
 
         $admin->nombre = $request->input("nombre");
-        $admin->password = password_hash($request->input("password"),PASSWORD_BCRYPT);
-  
+        $cifrada = password_hash($request->input("password"),PASSWORD_BCRYPT);
+        $admin->password= $cifrada;
         $admin->email = $request->input("email");
         $admin->puesto = $request->input("puesto");
         $admin->save();
 
       
         return redirect()->route('esteticas.index')->with('adminexito', 'administrador creado correctamente');
+
     }
 
     
@@ -81,7 +85,8 @@ class AdminController extends Controller
         $admin = Admin::find($id);
 
         $admin->nombre = $request->input("nombre");
-        $admin->password = $request->input("password");
+        $cifrada = password_hash($request->input("password"),PASSWORD_BCRYPT);
+        $admin->password= $cifrada;
   
         $admin->email = $request->input("email");
 

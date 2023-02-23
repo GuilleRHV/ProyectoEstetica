@@ -11,6 +11,7 @@ return new class extends Migration
     {
         //Crea la tabla Socios
         Schema::create('socios', function (Blueprint $table) {
+
             $table->id();
             $table->string("nombre");
             $table->string("apellidos");
@@ -18,12 +19,15 @@ return new class extends Migration
             $table->string("telefono");
 
             $table->timestamps();
+
         });
     }
 
   
     public function down()
     {
+
         Schema::dropIfExists('socios');
+        
     }
 };

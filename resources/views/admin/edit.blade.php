@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h1>Dar de alta adminsss</h1>
+            <h1>Editar administrador</h1>
             <a href="{{route('esteticas.index')}}" class="btn btn-primary">Index</a>
 
             <hr>

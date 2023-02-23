@@ -59,6 +59,7 @@ Route::post('/esteticas/storesocio',[SocioController::class,'store'])->name('soc
 Route::get('/esteticas/editsocio/{id}',[SocioController::class,'edit'])->name('socio.edit');
 Route::put('/esteticas/updatesocio/{id}',[SocioController::class,'update'])->name('socio.update');
 Route::delete('/esteticas/deletesocio/{id}',[SocioController::class,'destroy'])->name('socio.destroy');
+
 //ADMIN
 Route::get('/esteticas/showadmin/{id}',[AdminController::class,'show'])->name('admin.show');
 Route::get('/esteticas/createadmin',[AdminController::class,'create'])->name('admin.create');
@@ -67,12 +68,14 @@ Route::get('/esteticas/editadmin/{id}',[AdminController::class,'edit'])->name('a
 Route::put('/esteticas/updateadmin/{id}',[AdminController::class,'update'])->name('admin.update');
 Route::delete('/esteticas/deleteadmin/{id}',[AdminController::class,'destroy'])->name('admin.destroy');
 
+
 //TRATAMIENTOS
 Route::get('/esteticas/dartratamiento/{id}',[TratamientoController::class,'dartratamiento'])->name('tratamiento.dartratamiento');
 Route::get('/esteticas/createtratamiento',[TratamientoController::class,'create'])->name('tratamiento.create');
 Route::post('/esteticas/storetratamiento',[TratamientoController::class,'store'])->name('tratamiento.store');
 Route::post('/esteticas/storesociotratamiento',[SocioTratamientoController::class,'store'])->name('sociotratamiento.store');
 Route::delete('/esteticas/deletesociotratamiento/{fecha}/{socio_id}',[SocioTratamientoController::class,'destroy'])->name('sociotratamiento.destroy');
+
 
 //ESTETICAS (INDEX)
 Route::get('/esteticas/credenciales',[EsteticaController::class,'credenciales'])->name('esteticas.credenciales');

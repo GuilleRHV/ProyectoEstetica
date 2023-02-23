@@ -15,7 +15,7 @@ return new class extends Migration
             $table->date("fecha");
 
             $table->unsignedBigInteger('socio_id');//Se crea el campo
-            $table->foreign('socio_id')->references('id')->on('socios');//El enlace de fk
+            $table->foreign('socio_id')->references('id')->on('socios')->onDelete('cascade');;//El enlace de fk
 
             $table->unsignedBigInteger('tratamiento_id');//Se crea el campo
             $table->foreign('tratamiento_id')->references('id')->on('tratamientos')->onDelete('cascade');//El enlace de fk

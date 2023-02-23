@@ -25,8 +25,10 @@ class SocioController extends Controller
     //Crea un nuevo Socio a partir de los datos de la peticion enviada por el formulario.
     public function store(Request $request)
     {
+
         Socio::create($request->all());
         return redirect()->route('esteticas.index')->with('socioexito', 'Socio dado de alta correctamente');
+        
     }
 
    
@@ -35,8 +37,11 @@ class SocioController extends Controller
     {
         $socio = Socio::find($id);
         $dinerototalgastado=0;
-        foreach ($socio->tratamientos as $tr){
+
+        foreach ($socio->tratamientos as $tr) {
+
             $dinerototalgastado=$dinerototalgastado+$tr->precio;
+
         }
       // $sociotratamiento = SocioTratamiento::all();
    
@@ -55,6 +60,7 @@ class SocioController extends Controller
      //Actualiza un Socio con los campos de la peticion
     public function update(Request $request, $id)
     {
+        //Valida los datos input
         $request->validate([
 
             "nombre" => "required",
@@ -80,6 +86,7 @@ class SocioController extends Controller
 
         $socio->save();
         return redirect()->route('esteticas.index')->with("exito", "Modificado exitosamente");
+
     }
 
    
@@ -88,9 +95,8 @@ class SocioController extends Controller
     {
     
         $socio = Socio::find($id);
-        //$hijo = SocioTratamiento::find($socio->socio_id);
-        //$hijo->delete(); 
         $socio->delete();
+
         return redirect()->route('esteticas.index')->with("borrarsocioexito", "Socio dado de baja exitosamente");
     }
 }
