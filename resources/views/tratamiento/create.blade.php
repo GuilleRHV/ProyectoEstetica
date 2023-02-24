@@ -47,13 +47,30 @@
 
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="tipo" value="centroestetica" checked>
-                    <label class="form-check-label" for="centroestetica">Centro estetica</label>
+                    <input class="form-check-input" type="radio" name="tipo" value="micropigmentacion" checked>
+                    <label class="form-check-label" for="micropigmentacion"> Micropigmentacion</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="tipo" value="peluqueria">
-                    <label class="form-check-label" for="peluqueria">peluqueria</label>
+                    <input class="form-check-input" type="radio" name="tipo" value="cuidado de cabello">
+                    <label class="form-check-label" for="cuidadocabello">Cuidado de cabello</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tipo" value="masaje">
+                    <label class="form-check-label" for="masaje">Masaje</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tipo" value="mesoterapia">
+                    <label class="form-check-label" for="mesoterapia">Mesoterapia</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tipo" value="fotodepilacion">
+                    <label class="form-check-label" for="fotodepilacion">Fotodepilacion</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tipo" value="bronceado">
+                    <label class="form-check-label" for="bronceado">Bronceado</label>
                 </div><br>
+
 
 
                 <div class="form-group">
