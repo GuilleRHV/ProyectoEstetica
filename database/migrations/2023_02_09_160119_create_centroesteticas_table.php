@@ -12,13 +12,18 @@ return new class extends Migration
         //Crea la tabla de los centros de estetica con sus campos
         Schema::create('centroesteticas', function (Blueprint $table) {
             $table->id();
-            $table->integer("nsalas");
-            $table->boolean("fisioterapia");
+            $table->string("nombre");
+            $table->string("razonsocial");
+            $table->string("direccion");
+            $table->string("telefono");
+            $table->string("email");
+            $table->boolean("unisex");
+            $table->string("capacidadmax");
             
             $table->timestamps();
         });
     }
-
+    
     
     public function down()
     {

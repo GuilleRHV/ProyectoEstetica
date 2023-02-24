@@ -41,7 +41,7 @@
 
                 <div class="form-group">
                     <label for="tipo">tipo</label>
-                    
+
                     </label>
                 </div>
 
@@ -51,10 +51,23 @@
                     <label class="form-check-label" for="centroestetica">Centro estetica</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="tipo"  value="peluqueria">
+                    <input class="form-check-input" type="radio" name="tipo" value="peluqueria">
                     <label class="form-check-label" for="peluqueria">peluqueria</label>
                 </div><br>
-                
+
+
+                <div class="form-group">
+                    <label for="centro_id">ID del centro</label>
+                    <input type="text" name="centro_id" id="centro_id" class="form-control" placeholder="Id del centro">
+                    </label>
+                </div>
+
+                <select class="form-select" aria-label="Default select example" name="centro_nombre">
+                    <option selected value="peluqueria">peluqueria</option>
+                    <option value="centroestetica">centro estetica</option>
+                   
+                </select>
+
 
 
 

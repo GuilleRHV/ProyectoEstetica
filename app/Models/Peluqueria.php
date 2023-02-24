@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Peluqueria extends Model
 {
-    protected $fillable = ['nsalas','fisioterapia'];
+    protected $table = 'peluquerias';
+    protected $fillable = ['nombre','razonsocial','direccion','telefono','email','nsalas','fisioterapia'];
     use HasFactory;
+    
 }

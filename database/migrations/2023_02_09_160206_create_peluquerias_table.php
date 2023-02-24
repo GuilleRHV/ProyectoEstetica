@@ -12,8 +12,13 @@ return new class extends Migration
     {
         Schema::create('peluquerias', function (Blueprint $table) {
             $table->id();
+            $table->string("nombre");
+            $table->string("razonsocial");
+            $table->string("direccion");
+            $table->string("telefono");
+            $table->string("email");
             $table->integer("nsalas");
-            $table->boolean("fisioterapia");
+            $table->tinyInteger("fisioterapia");
             $table->timestamps();
         });
     }

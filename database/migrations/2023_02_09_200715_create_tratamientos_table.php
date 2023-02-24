@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string("nombre");
             $table->float("precio");
             $table->string("tipo");
+            $table->unsignedBigInteger('centroestetica_id')->nullable();//Se crea el campo
+            $table->foreign('centroestetica_id')->references('id')->on('centroesteticas')->onDelete('cascade');//El enlace de fk
+            
+            $table->unsignedBigInteger('peluqueria_id')->nullable();//Se crea el campo
+            $table->foreign('peluqueria_id')->references('id')->on('peluquerias')->onDelete('cascade');//El enlace de fk
             $table->timestamps();
         });
     }

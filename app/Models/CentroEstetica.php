@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CentroEstetica extends Model
 {
-    protected $fillable = ['unisex','capacidadmax'];
+    protected $table = 'centroesteticas';
+    protected $fillable = ['nombre','razonsocial','direccion','telefono','email','unisex','capacidadmax'];
     use HasFactory;
 }
