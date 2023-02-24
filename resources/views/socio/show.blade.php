@@ -36,6 +36,7 @@
                 <label for="telefono" class="col-form-label" style="font-weight:600;font-size:17px">Telefono</label><br>
                 <label for="telefono" class="col-form-label">{{ $socio->telefono ?? '' }}</label>
             </div>
+            
 
             <hr>
 
@@ -49,6 +50,9 @@
 
                         <th scope="col">Nombre tratamiento</th>
                         <th scope="col">fecha</th>
+                        <th scope="col">tipo</th>
+                        <th scope="col">centro estetica(ID)</th>
+                        <th scope="col">peluqueria(ID)</th>
                         <th scope="col">precio</th>
                     </tr>
                 </thead>
@@ -62,6 +66,9 @@
                         <td>{{ $tratamiento->nombre }}</td>
 
                         <td>{{ $tratamiento->pivot->fecha }}</td>
+                        <td>{{ $tratamiento->tipo }}</td>
+                        <td>{{ $tratamiento->centroestetica_id }}</td>
+                        <td>{{ $tratamiento->peluqueria_id }}</td>
                         <td>{{ $tratamiento->precio }}€</td>
                         <td>
                             <form action="{{route('sociotratamiento.destroy',['fecha'=>$tratamiento->pivot->fecha,'socio_id'=>$tratamiento->pivot->socio_id])}}" method="post">

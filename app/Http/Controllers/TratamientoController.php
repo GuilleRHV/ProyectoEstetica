@@ -43,7 +43,7 @@ class TratamientoController extends Controller
         $peluquerias = Peluqueria::all();
         $centrosesteticas = CentroEstetica::all();
 
-        if ($request->input('tipo') == "peluqueria") {
+        if ($request->input('centro_nombre') == "peluqueria") {
             $encontrado = false;
             foreach ($peluquerias as $p) {
                 if ($p->id == $request->input("centro_id")) {
