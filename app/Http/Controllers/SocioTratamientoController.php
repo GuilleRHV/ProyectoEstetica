@@ -58,23 +58,22 @@ class SocioTratamientoController extends Controller
 
 
         ]);
+        //1. ALMACENAMOS EN BBDD
         //Almacenamos el socio_tratamiento
         $tratamiento = new SocioTratamiento();
-
-        
         $tratamiento->fecha = $request->input('fecha');
         $tratamiento->socio_id = $request->input('socio_id');
         $tratamiento->tratamiento_id = $request->input('tratamiento_id');
 
-
         $tratamiento->save();
 
 
-       
+       //2. SINCRONIZAMOS DATOS
       
 
         $socio = Socio::find($request->input("socio_id"));
         
+        //Sincronizamos los tratamientos de los socios con el tratamiento_id que acabamos de asignar y añadimos el pivot fecha
         $socio->tratamientos()->syncWithoutDetaching($request->input('tratamiento_id'), ["fecha" => $fecha]);
 
    
@@ -86,19 +85,7 @@ class SocioTratamientoController extends Controller
     
     public function show($id)
     {
-     /*   $sociotratamiento = SocioTratamiento::all();
-        foreach( $sociotratamiento as $st){
-            if($sociotratamiento->socio_id=$id);
-        }
-        $sociotratamiento->socio
-        $dinerototalgastado=0;
-        foreach ($socio->tratamientos as $tr){
-            $dinerototalgastado=$dinerototalgastado+$tr->precio;
-        }
-      // $sociotratamiento = SocioTratamiento::all();
-   
-        return view('socio.show', ['socio' => $socio,"dinerototalgastado" => $dinerototalgastado]);
-    */
+     
     }
 
     
@@ -116,23 +103,17 @@ class SocioTratamientoController extends Controller
    
     public function destroy($fecha,$socio_id)
     {
-        //print($socio_id);
-       // print($fecha);
-       // $socio_id =$tratamiento['socio_id'];
-      //  dd($fecha);
-        //$tratamiento_id=$tratamiento->pivot->tratamiento_id;
+       
         $sociotratamiento = SocioTratamiento::all();
 
+        //Si existe lo borramos (tiene que coincidir fecha y socio_id)
         foreach($sociotratamiento as $st){
             if ($st->socio_id == $socio_id && $st->fecha == $fecha){
             
                 $st->delete();   
             }
         }
-        //$hijo = sociotratamientoTratamiento::find($sociotratamiento->sociotratamiento_id);
-        //$hijo->delete(); 
-        //$sociotratamiento->delete();
-       // {{route('tratamiento.dartratamiento',$socio->id)}}
+        
         return redirect()->route('socio.show',['id'=>$socio_id])->with("tratamientoeliminado", "El tratamiento ha sido eliminado y se ha restado al coste total");
     }
 }

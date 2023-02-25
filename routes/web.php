@@ -10,9 +10,7 @@ use App\Http\Controllers\PruebaController;
 use Illuminate\Database\Console\PruneCommand;
 
 use App\Http\Controllers\AppEjemplo;
-use App\Http\Controllers\AsignaturaController;
-use App\Http\Controllers\VideoclubController;
-use App\Http\Controllers\HomeController;
+
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;

@@ -54,9 +54,9 @@ class UserController extends Controller
             "email" => "required"
         ], [
             
-            "nombre.required" => "El nombre es obvligatorio",
+            "nombre.required" => "El nombre es obligatorio",
             
-            "email.required" => "El email es obvligatorio"
+            "email.required" => "El email es obligatorio"
 
         ]);
         $usuario = new User;
@@ -112,9 +112,9 @@ class UserController extends Controller
             "password" => "required",
          
         ], [
-            "name.required" => "El dni es obvligatorio",
-            "email.required" => "El nombre es obvligatorio",
-            "password.required" => "El password es obvligatorio",
+            "name.required" => "El dni es obligatorio",
+            "email.required" => "El nombre es obligatorio",
+            "password.required" => "El password es obligatorio",
            
 
         ]);

@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h1>Dar de alta adminsss</h1>
+            <h1>Dar de alta administradores</h1>
             <a href="{{route('esteticas.index')}}" class="btn btn-primary">Index</a>
 
             <hr>
@@ -38,7 +38,7 @@
 
                 <div class="form-group">
                     <label for="email">email</label>
-                    <input type="text" name="email" id="email" class="form-control" placeholder="Descripcion">
+                    <input type="text" name="email" id="email" class="form-control" placeholder="email">
                     </label>
                 </div>
 

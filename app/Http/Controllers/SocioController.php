@@ -14,7 +14,12 @@ class SocioController extends Controller
         //
     }
 
-    
+    //Para usarlo tienes que logearte
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //Devuelve la vista create.
     public function create()
     {
@@ -25,6 +30,21 @@ class SocioController extends Controller
     //Crea un nuevo Socio a partir de los datos de la peticion enviada por el formulario.
     public function store(Request $request)
     {
+        $request->validate([
+
+            "nombre" => "required",
+            "apellidos" => "required",
+            "edad" => "required",
+            "telefono" => "required",
+           
+        ], [
+     
+            "nombre.required" => "El nombre es obligatorio",
+            "telefono.required" => "El telefono es obligatorio",
+            "edad.required" => "El edad es obligatorio",
+            "apellidos.required" => "El apellidos es obligatorio"
+
+        ]);
 
         Socio::create($request->all());
         return redirect()->route('esteticas.index')->with('socioexito', 'Socio dado de alta correctamente');
@@ -37,7 +57,7 @@ class SocioController extends Controller
     {
         $socio = Socio::find($id);
         $dinerototalgastado=0;
-
+        //Calculamos el dinero total que ha gastado en tratamientos (cuando los eliminaremos se actualizara)
         foreach ($socio->tratamientos as $tr) {
 
             $dinerototalgastado=$dinerototalgastado+$tr->precio;
@@ -70,10 +90,10 @@ class SocioController extends Controller
            
         ], [
      
-            "nombre.required" => "El nombre es obvligatorio",
-            "telefono.required" => "El telefono es obvligatorio",
-            "edad.required" => "El edad es obvligatorio",
-            "apellidos.required" => "El apellidos es obvligatorio"
+            "nombre.required" => "El nombre es obligatorio",
+            "telefono.required" => "El telefono es obligatorio",
+            "edad.required" => "El edad es obligatorio",
+            "apellidos.required" => "El apellidos es obligatorio"
 
         ]);
 

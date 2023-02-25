@@ -20,7 +20,7 @@ class EsteticaController extends Controller
 
     }
     
-    
+    //Para usarlo tienes que logearte
     public function __construct()
     {
         $this->middleware('auth');

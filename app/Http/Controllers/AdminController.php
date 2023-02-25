@@ -14,6 +14,11 @@ class AdminController extends Controller
     {
         //
     }
+    //Para usarlo tienes que logearte
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
    
     //Devuelve la vista create.
@@ -30,6 +35,22 @@ class AdminController extends Controller
     public function store(Request $request)
     {
 
+        $request->validate([
+
+            "nombre" => "required",
+            "email" => "required",
+            "password" => "required",
+            "puesto"=>"required",
+           
+        ], [
+     
+            "nombre.required" => "El nombre es obligatorio",
+        
+            "password.required" => "El password es obligatorio",
+            "email.required" => "El email es obligatorio",
+            "puesto.required"=>"El puesto es obligatorio"
+
+        ]);
         $admin = new Admin();
 
         $admin->nombre = $request->input("nombre");
@@ -73,13 +94,15 @@ class AdminController extends Controller
             "nombre" => "required",
             "email" => "required",
             "password" => "required",
+            "puesto"=>"required",
            
         ], [
      
-            "nombre.required" => "El nombre es obvligatorio",
+            "nombre.required" => "El nombre es obligatorio",
         
-            "password.required" => "El password es obvligatorio",
-            "email.required" => "El email es obvligatorio"
+            "password.required" => "El password es obligatorio",
+            "email.required" => "El email es obligatorio",
+            "puesto.required"=>"El puesto es obligatorio"
 
         ]);
         $admin = Admin::find($id);
@@ -87,7 +110,7 @@ class AdminController extends Controller
         $admin->nombre = $request->input("nombre");
         $cifrada = password_hash($request->input("password"),PASSWORD_BCRYPT);
         $admin->password= $cifrada;
-  
+        $admin->puesto = $request->input("puesto");
         $admin->email = $request->input("email");
 
         $admin->save();

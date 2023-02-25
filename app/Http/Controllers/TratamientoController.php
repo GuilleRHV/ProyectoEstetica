@@ -18,9 +18,14 @@ class TratamientoController extends Controller
     {
         //
     }
+    //Para usarlo tienes que logearte
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
 
-    //Devuelve la vista create.
+    //Devuelve la vista create. Crearemos los tratamientos disponibles, aun no los asignaremos a los socios
     public function create()
     {
         return view("tratamiento.create");
@@ -43,6 +48,7 @@ class TratamientoController extends Controller
         $peluquerias = Peluqueria::all();
         $centrosesteticas = CentroEstetica::all();
 
+        //Ahora los asociamos con la peluqueria
         if ($request->input('centro_nombre') == "peluqueria") {
             $encontrado = false;
             foreach ($peluquerias as $p) {
@@ -57,11 +63,8 @@ class TratamientoController extends Controller
             }
 
 
-
+         //Asociamos con un centroestetica       
         } else {
-            
-
-
 
             $encontrado = false;
             foreach ($centrosesteticas as $p) {
@@ -83,7 +86,7 @@ class TratamientoController extends Controller
         return redirect()->route('esteticas.index')->with('exito', 'usuario creado correctamente');
     }
 
-    //Funcion para poder asignar un tratamiento con un socio.
+    //Funcion para poder asignar un tratamiento existente a un socio.
     public function dartratamiento($id)
     {
         $socio = Socio::find($id);
